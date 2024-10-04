@@ -40,7 +40,7 @@
 	</script>
 </svelte:head>
 
-<div class="flex justify-center place-content-center mx-2 my-auto max-h-screen">
+<div class="flex justify-center place-content-center mx-4 my-auto max-h-screen max-w-sm md:max-w-full">
     <article
         class="z-10 flex max-w-xl flex-col items-start justify-between relative rounded-3xl p-7 border border-gray-700/70 bg-background"
     >
