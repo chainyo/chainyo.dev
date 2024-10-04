@@ -4,9 +4,11 @@
     import FlickeringGrid from "$lib/components/ui/FlickeringGrid.svelte";
     import { cn } from "$lib/utils";
 
+    const email = "thomas@chainyo.dev";
+
     // Add a function to copy the email to the clipboard
     const copyEmail = () => {
-        navigator.clipboard.writeText("thomas@chainyo.dev");
+        navigator.clipboard.writeText(email);
         toast.success("Email copied to clipboard!");
     };
 </script>
@@ -40,9 +42,9 @@
 	</script>
 </svelte:head>
 
-<div class="flex justify-center place-content-center mx-8 my-auto max-h-screen max-w-xs sm:max-w-full">
+<div class="flex justify-center place-content-center my-auto max-h-screen">
     <article
-        class="z-10 flex max-w-xl flex-col items-start justify-between relative rounded-3xl p-7 border border-gray-700/70 bg-background"
+        class="z-10 flex flex-col mx-8 items-start justify-between relative rounded-3xl p-7 border border-gray-700/70 bg-background"
     >
         <BorderBeam size={150} duration={12} />
         <div class="relative mt-2 mb-2 flex items-center gap-x-4">
@@ -58,7 +60,7 @@
                         Thomas Chaigneau
                     </a>
                 </p>
-                <p class="text-gray-500">Machine Learning Engineer</p>
+                <p class="text-gray-500">AI Engineer</p>
             </div>
         </div>
         <div class="group relative">
@@ -67,10 +69,10 @@
             >
                 <span class="absolute inset-0"></span>
                 Hi I'm Thomas 👋<br /><br />
-                I solve problems by building software with deep learning.<br /><br />
-                I can help you with your next project, from prototyping to production.
+                I <span class="underline underline-offset-2">solve</span> problems by building software with deep learning.<br />
+                I can <span class="underline underline-offset-2">help</span> with your next project, from <span class="text-[#ffaa40]">prototyping</span> to <span class="text-[#9c40ff]">production</span>.
             </h3>
-            <p class="flex mt-5 mb-5 line-clamp-3 text-sm leading-6 text-gray-400 justify-center">
+            <p class="flex mt-10 mb-5 line-clamp-3 text-sm leading-6 text-gray-400 justify-center">
                 If you have a business inquiry<br />or want to collaborate ⤵
             </p>
             <button
@@ -86,7 +88,7 @@
                 />
                 📧 <hr class="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />
                 {" "}
-                msg@chainyo.dev
+                {email}
             </button>
         </div>
     </article>
