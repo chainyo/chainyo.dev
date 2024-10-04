@@ -1,6 +1,7 @@
 <script>
     import { toast } from "svelte-sonner";
     import BorderBeam from "$lib/components/ui/BorderBeam.svelte";
+    import FlickeringGrid from "$lib/components/ui/FlickeringGrid.svelte";
     import { cn } from "$lib/utils";
 
     // Add a function to copy the email to the clipboard
@@ -39,9 +40,9 @@
 	</script>
 </svelte:head>
 
-<div class="flex justify-center place-content-center m-auto max-h-screen">
+<div class="flex justify-center place-content-center mx-2 my-auto max-h-screen">
     <article
-        class="z-0 flex max-w-xl flex-col items-start justify-between relative rounded-3xl p-7 border border-gray-700/70 bg-background"
+        class="z-10 flex max-w-xl flex-col items-start justify-between relative rounded-3xl p-7 border border-gray-700/70 bg-background"
     >
         <BorderBeam size={150} duration={12} />
         <div class="relative mt-2 mb-2 flex items-center gap-x-4">
@@ -51,13 +52,13 @@
             class="h-10 w-10 rounded-full bg-gray-50"
             />
             <div class="text-sm leading-5">
-            <p class="font-semibold text-white">
-                <a href="https://github.com/chainyo">
-                    <span class="absolute inset-0"></span>
-                    Thomas Chaigneau
-                </a>
-            </p>
-            <p class="text-gray-500">Machine Learning Engineer</p>
+                <p class="font-semibold text-white">
+                    <a href="https://github.com/chainyo">
+                        <span class="absolute inset-0"></span>
+                        Thomas Chaigneau
+                    </a>
+                </p>
+                <p class="text-gray-500">Machine Learning Engineer</p>
             </div>
         </div>
         <div class="group relative">
@@ -65,11 +66,12 @@
                 class="mt-3 text-lg font-semibold leading-6 text-gray-200 group-hover:text-gray-50"
             >
                 <span class="absolute inset-0"></span>
-                Hi I'm Thomas 👋<br />
-                I solve problems by building software with deep learning.
+                Hi I'm Thomas 👋<br /><br />
+                I solve problems by building software with deep learning.<br /><br />
+                I can help you with your next project, from prototyping to production.
             </h3>
-            <p class="mt-5 mb-5 line-clamp-3 text-sm leading-6 text-gray-400">
-                If you have a business inquiry or want to collaborate ⤵
+            <p class="flex mt-5 mb-5 line-clamp-3 text-sm leading-6 text-gray-400 justify-center">
+                If you have a business inquiry<br />or want to collaborate ⤵
             </p>
             <button
                 class={cn(
@@ -88,4 +90,12 @@
             </button>
         </div>
     </article>
+    <FlickeringGrid
+        class="z-0 absolute inset-0 size-full"
+        squareSize={4}
+        gridGap={6}
+        color="#6B7280"
+        maxOpacity={0.5}
+        flickerChance={0.1}
+    />
 </div>
