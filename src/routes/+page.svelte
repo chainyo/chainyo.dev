@@ -86,7 +86,7 @@
                 />
                 📧 <hr class="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />
                 {" "}
-                thomas@chainyo.dev
+                msg@chainyo.dev
             </button>
         </div>
     </article>
