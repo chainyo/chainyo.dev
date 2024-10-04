@@ -14,6 +14,10 @@ const config: Config = {
 			}
 		},
 		extend: {
+			animation: {
+				"border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+				gradient: "gradient 8s linear infinite",
+			},
 			colors: {
 				border: "hsl(var(--border) / <alpha-value>)",
 				input: "hsl(var(--input) / <alpha-value>)",
@@ -56,7 +60,19 @@ const config: Config = {
 			},
 			fontFamily: {
 				sans: [...fontFamily.sans]
-			}
+			},
+			keyframes: {
+				"border-beam": {
+				  "100%": {
+					"offset-distance": "100%",
+				  },
+				},
+				gradient: {
+					to: {
+					  "background-position": "200% center",
+					},
+				},
+			},
 		}
 	},
 };
