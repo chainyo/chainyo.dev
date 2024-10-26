@@ -60,7 +60,7 @@
                         Thomas Chaigneau
                     </a>
                 </p>
-                <p class="text-gray-500">AI Engineer</p>
+                <p class="text-gray-500">ML Engineer</p>
             </div>
         </div>
         <div class="group relative">
