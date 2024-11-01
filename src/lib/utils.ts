@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { cubicOut } from "svelte/easing";
+import { get, writable } from "svelte/store";
 import { error } from "@sveltejs/kit";
 import type { DocResolver } from "$lib/types/docs.js";
 import type { TransitionConfig } from "svelte/transition";
@@ -8,6 +9,8 @@ import type { TransitionConfig } from "svelte/transition";
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
+
+export const isBrowser = typeof document !== "undefined";
 
 type FlyAndScaleParams = {
 	y?: number;
@@ -115,5 +118,32 @@ export async function getDoc(slug: string) {
 		component: doc.default,
 		metadata: doc.metadata,
 		title: doc.metadata.title,
+	};
+}
+
+export function createCopyCodeButton() {
+	const codeString = writable("");
+	const copied = writable(false);
+	let copyTimeout = 0;
+
+	function copyCode() {
+		if (!isBrowser) return;
+		navigator.clipboard.writeText(get(codeString));
+		copied.set(true);
+		clearTimeout(copyTimeout);
+		copyTimeout = window.setTimeout(() => {
+			copied.set(false);
+		}, 2500);
+	}
+
+	function setCodeString(node: HTMLElement) {
+		codeString.set(node.innerText.trim() ?? "");
+	}
+
+	return {
+		copied,
+		copyCode,
+		setCodeString,
+		codeString,
 	};
 }
