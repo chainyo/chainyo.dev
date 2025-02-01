@@ -4,12 +4,17 @@
     import FlickeringGrid from "$lib/components/ui/FlickeringGrid.svelte";
     import { cn } from "$lib/utils";
 
+    import formbricks from "@formbricks/js";
+    if (typeof window !== "undefined") {
+        formbricks.init({
+            environmentId: "cm6mj62t7020zky03fuj41jcc", 
+            apiHost: "https://app.formbricks.com",
+        });
+    }
+
     const bookCall = () => {
         toast.success("What an awesome decision! 🎉")
-        setTimeout(() => {
-            window.open("https://cal.com/chainyo/screening", "_blank");
-        }, 1000);
-    };
+    }
 </script>
 
 <svelte:head>
@@ -75,6 +80,7 @@
                 Discover how to streamline<br />your workflows with AI ⤵
             </p>
             <button
+                id="book-call"
                 class={cn(
                 "group relative mx-auto flex max-w-fit flex-row items-center justify-center rounded-2xl bg-white/40 px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f] backdrop-blur-sm transition-shadow duration-500 ease-out [--bg-size:300%] hover:shadow-[inset_0_-5px_10px_#8fdfff3f] dark:bg-black/40",
                 )}
