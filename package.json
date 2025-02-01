@@ -26,7 +26,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@formbricks/js": "^3.0.2",
 		"clsx": "^2.1.1",
 		"mode-watcher": "^0.4.1",
 		"svelte-sonner": "^0.3.28",
