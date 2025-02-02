@@ -17,13 +17,13 @@
 	<title>Thomas Chaigneau | AI Engineer</title>
 	<meta
 		name="description"
-		content="Hi, I'm Thomas 👋. I automate repetitive tasks with Ai, so you can focus on growing your business."
+		content="Hi, I'm Thomas 👋. I automate repetitive tasks with AI, so you can focus on growing your business."
 	/>
 	<meta name="keywords" content="machine learning, ai, portfolio, mle, engineering, software, llm" />
 	<meta name="author" content="Thomas Chaigneau" />
 	<meta name="robots" content="index, follow" />
-	<meta property="og:title" content="Thomas Chaigneau | AI Engineer" />
-	<meta property="og:description" content="Hi, I'm Thomas 👋. I automate repetitive tasks with Ai, so you can focus on growing your business." />
+	<meta property="og:title" content="Thomas Chaigneau | ML Engineer" />
+	<meta property="og:description" content="Hi, I'm Thomas 👋. I automate repetitive tasks with AI, so you can focus on growing your business." />
 	<meta property="og:image" content="https://chainyo.dev/og-image.png" />
 	<meta property="og:url" content="https://chainyo.dev" />
 	<meta name="twitter:card" content="summary_large_image" />
@@ -60,7 +60,7 @@
                         Thomas Chaigneau
                     </a>
                 </p>
-                <p class="text-gray-500">AI Engineer</p>
+                <p class="text-gray-500">ML Engineer</p>
             </div>
         </div>
         <div class="group relative">
