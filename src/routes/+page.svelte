@@ -120,7 +120,7 @@
 
     const handleProjectClick = (project: typeof projects[0]) => {
         if (project.status === "skeleton") {
-            toast.info(`${project.title} coming ${project.month}!`);
+            toast.warning(`${project.title} is coming on ${project.month}!`);
         } else if (project.status === "building") {
             toast.info(`${project.title} is currently in development!`);
         } else if (project.status === "live" && project.url && project.url !== "#") {
@@ -214,15 +214,16 @@
             
             <div class="flex flex-row gap-2 justify-center items-center md:mt-16">
                 <Button 
-                    class="bg-linear-to-r from-[#ffaa40] to-[#9c40ff] text-white hover:opacity-90 transition-opacity px-8 py-3 text-lg"
-                    on:click={() => window.open('https://x.com/chainyo_ai', '_blank')}
+                    class="bg-linear-to-r from-[#ffaa40] to-[#9c40ff] text-white hover:opacity-90 transition-opacity px-8 py-3 text-lg" 
+                    href="https://x.com/chainyo_ai"
                 >
                     <ChevronRight />
                     Follow the Quest
                 </Button>
-                <Button 
-                    variant="secondary" size="icon"
-                    on:click={() => window.open('https://github.com/chainyo', '_blank')}
+                <Button
+                    variant="secondary" 
+                    size="icon" 
+                    href="https://github.com/chainyo"
                 >
                     <Github />
                 </Button>
