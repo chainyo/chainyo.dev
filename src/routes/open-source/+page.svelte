@@ -1,1 +1,0 @@
-Ici la landing page open-source.
