@@ -1,5 +1,6 @@
 import { fontFamily } from "tailwindcss/defaultTheme";
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: Config = {
 	darkMode: ["class"],
@@ -17,6 +18,9 @@ const config: Config = {
 			animation: {
 				"border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
 				gradient: "gradient 8s linear infinite",
+				"accordion-down": "accordion-down 0.2s ease-out",
+				"accordion-up": "accordion-up 0.2s ease-out",
+				"caret-blink": "caret-blink 1.25s ease-out infinite",
 			},
 			colors: {
 				border: "hsl(var(--border) / <alpha-value>)",
@@ -72,9 +76,22 @@ const config: Config = {
 					  "background-position": "200% center",
 					},
 				},
+				"accordion-down": {
+				  from: { height: "0" },
+				  to: { height: "var(--bits-accordion-content-height)" },
+				},
+				"accordion-up": {
+				  from: { height: "var(--bits-accordion-content-height)" },
+				  to: { height: "0" },
+				},
+				"caret-blink": {
+				  "0%,70%,100%": { opacity: "1" },
+				  "20%,50%": { opacity: "0" },
+				},
 			},
 		}
 	},
+	plugins: [tailwindcssAnimate],
 };
 
 export default config;

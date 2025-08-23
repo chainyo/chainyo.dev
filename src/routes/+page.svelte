@@ -1,6 +1,6 @@
 <script lang="ts">
     import { toast } from "svelte-sonner";
-    import { ChevronRight, Github, Loader } from "lucide-svelte";
+    import { ChevronRight, Github, Loader } from "@lucide/svelte";
     import { Skeleton } from "$lib/components/ui/skeleton/index.js";
     import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "$lib/components/ui/card/index.js";
     import { Button } from "$lib/components/ui/button/index.js";
@@ -135,6 +135,8 @@
             toast.info(`${project.title} coming in ${project.month}! 🚧`);
         } else if (project.status === "building") {
             toast.info(`${project.title} is currently in development! 🔨`);
+        } else if (project.url === "#" || !project.url) {
+            toast.info(`${project.title} isn't live yet! Stay tuned 👀`);
         } else {
             window.open(project.url, '_blank');
         }
@@ -182,7 +184,7 @@
     <FlickeringGrid
         class="absolute inset-0 w-full h-full opacity-30"
         width={2000}
-        height={1200}
+        height={1470}
         squareSize={4}
         gridGap={6}
         color="#6B7280"
