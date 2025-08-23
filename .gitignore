@@ -23,3 +23,4 @@ vite.config.ts.timestamp-*
 # Cloudflare
 .cloudflare/*
 .wrangler/*
+dist/client/*
