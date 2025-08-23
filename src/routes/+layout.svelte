@@ -4,8 +4,8 @@
 	import '../app.css';
 </script>
 
-<Toaster theme="dark" class="z-50" />
 <ModeWatcher defaultMode={'dark'} />
+<Toaster theme="dark" position="top-center" />
 
 <div class="bg-background relative flex min-h-screen flex-col" id="page" data-vaul-drawer-wrapper>
 	<slot />

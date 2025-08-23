@@ -2,7 +2,7 @@
     import { toast } from "svelte-sonner";
     import { ChevronRight, Github, Loader } from "@lucide/svelte";
     import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-    import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "$lib/components/ui/card/index.js";
+    import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "$lib/components/ui/card/index.js";
     import { Button } from "$lib/components/ui/button/index.js";
     import FlickeringGrid from "$lib/components/ui/FlickeringGrid.svelte";
 
@@ -15,7 +15,6 @@
             status: "building",
             url: "#",
             month: "Sep 1st",
-            showSoon: true,
             mrr: 0
         },
         {
@@ -25,7 +24,6 @@
             status: "skeleton",
             url: "#",
             month: "Oct 1st",
-            showSoon: false,
             mrr: 0
         },
         {
@@ -35,7 +33,6 @@
             status: "skeleton", 
             url: "#",
             month: "Nov 1st",
-            showSoon: false,
             mrr: 0
         },
         {
@@ -45,7 +42,6 @@
             status: "skeleton",
             url: "#",
             month: "Dec 1st",
-            showSoon: false,
             mrr: 0
         },
         {
@@ -55,7 +51,6 @@
             status: "skeleton",
             url: "#", 
             month: "Jan 1st",
-            showSoon: false,
             mrr: 0
         },
         {
@@ -65,7 +60,6 @@
             status: "skeleton",
             url: "#",
             month: "Feb 1st",
-            showSoon: false,
             mrr: 0
         },
         {
@@ -75,7 +69,6 @@
             status: "skeleton",
             url: "#",
             month: "Mar 1st",
-            showSoon: false,
             mrr: 0
         },
         {
@@ -85,7 +78,6 @@
             status: "skeleton",
             url: "#",
             month: "Apr 1st",
-            showSoon: false,
             mrr: 0
         },
         {
@@ -95,7 +87,6 @@
             status: "skeleton",
             url: "#",
             month: "May 1st",
-            showSoon: false,
             mrr: 0
         },
         {
@@ -105,7 +96,6 @@
             status: "skeleton",
             url: "#",
             month: "Jun 1st",
-            showSoon: false,
             mrr: 0
         },
         {
@@ -115,7 +105,6 @@
             status: "skeleton",
             url: "#",
             month: "Jul 1st",
-            showSoon: false,
             mrr: 0
         },
         {
@@ -125,16 +114,17 @@
             status: "skeleton",
             url: "#",
             month: "Aug 1st",
-            showSoon: false,
             mrr: 0
         }
     ];
 
     const handleProjectClick = (project: typeof projects[0]) => {
         if (project.status === "skeleton") {
-            toast.info(`${project.title} coming in ${project.month}! 🚧`);
+            toast.info(`${project.title} coming ${project.month}!`);
         } else if (project.status === "building") {
-            toast.info(`${project.title} is currently in development! 🔨`);
+            toast.info(`${project.title} is currently in development!`);
+        } else if (project.status === "live" && project.url && project.url !== "#") {
+            window.open(project.url, '_blank');
         } else if (project.url === "#" || !project.url) {
             toast.info(`${project.title} isn't live yet! Stay tuned 👀`);
         } else {
@@ -197,11 +187,11 @@
         <!-- Hero Section -->
         <section class="mb-16 mt-8 lg:mt-16">
             <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-8 max-w-fit mx-auto">
-                <div class="flex-shrink-0">
+                <div class="shrink-0">
                     <img
                         src="https://avatars.githubusercontent.com/u/50595514?v=4"
                         alt="Thomas Chaigneau"
-                        class="h-32 w-32 rounded-full border-2 border-gray-300 shadow-lg"
+                        class="size-32 rounded-full border-2 border-gray-300 shadow-lg"
                     />
                 </div>
                 
@@ -224,7 +214,7 @@
             
             <div class="flex flex-row gap-2 justify-center items-center md:mt-16">
                 <Button 
-                    class="bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] text-white hover:opacity-90 transition-opacity px-8 py-3 text-lg"
+                    class="bg-linear-to-r from-[#ffaa40] to-[#9c40ff] text-white hover:opacity-90 transition-opacity px-8 py-3 text-lg"
                     on:click={() => window.open('https://x.com/chainyo_ai', '_blank')}
                 >
                     <ChevronRight />
@@ -234,7 +224,7 @@
                     variant="secondary" size="icon"
                     on:click={() => window.open('https://github.com/chainyo', '_blank')}
                 >
-                    <Github class="w-5 h-5" />
+                    <Github />
                 </Button>
             </div>
             
@@ -252,15 +242,39 @@
         <section class="mt-32">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {#each projects as project}
-                    <Card 
-                        class={`hover:shadow-lg transition-shadow cursor-pointer border-2 relative pt-4 ${project.showSoon ? 'border-[#ffaa40]/50' : 'hover:border-[#ffaa40]/50'}`}
-                        on:click={() => handleProjectClick(project)}
+                    <div 
+                        class={`hover:shadow-lg transition-shadow cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-500/50' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
+                        role="button"
+                        tabindex="0"
+                        onclick={() => handleProjectClick(project)}
+                        onkeydown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                handleProjectClick(project);
+                            }
+                        }}
                     >
-                        <!-- "Soon" Badge for current/next project -->
-                        {#if project.showSoon}
+                        <!-- Status Badge -->
+                        {#if project.status === 'building'}
                             <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                                <span class="bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                                    Soon
+                                <span class="relative text-xs text-[#ffaa40] dark:text-[#ffaa40] px-3 py-1 rounded font-medium flex items-center shadow-lg overflow-hidden">
+                                    <div class="absolute inset-0 bg-background"></div>
+                                    <div class="absolute inset-0 bg-[#ffaa40]/10 dark:bg-[#ffaa40]/20"></div>
+                                    <div class="relative flex items-center">
+                                        <Loader class="animate-spin w-3 h-3 mr-1" />
+                                        Building
+                                    </div>
+                                </span>
+                            </div>
+                        {:else if project.status === 'live'}
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                                <span class="relative text-xs text-lime-600 dark:text-lime-400 px-3 py-1 rounded font-medium flex items-center shadow-lg overflow-hidden">
+                                    <div class="absolute inset-0 bg-background"></div>
+                                    <div class="absolute inset-0 bg-lime-500/10 dark:bg-lime-500/20"></div>
+                                    <div class="relative flex items-center">
+                                        <div class="w-2 h-2 bg-lime-600 dark:bg-lime-400 rounded-full mr-1 animate-pulse"></div>
+                                        Live
+                                    </div>
                                 </span>
                             </div>
                         {/if}
@@ -273,21 +287,13 @@
                                         {project.title}
                                     {/if}
                                 </CardTitle>
-                                <div class="flex items-center gap-2">
-                                    {#if project.status === "building"}
-                                        <span class="text-xs text-[#ffaa40] bg-[#ffaa40]/10 dark:bg-[#ffaa40]/20 dark:text-[#ffaa40] px-2 py-1 rounded font-medium flex items-center">
-                                            <Loader class="animate-spin w-3 h-3 mr-1" />
-                                            Building
-                                        </span>
-                                    {/if}
-                                    <span class="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">
-                                        {project.month}
-                                    </span>
-                                </div>
+                                <span class="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">
+                                    {project.month}
+                                </span>
                             </div>
                         </CardHeader>
                         
-                        <CardContent class="pb-4 pt-2">
+                        <CardContent class="pb-4 pt-2 flex-grow">
                             {#if project.status === "skeleton"}
                                 <div class="space-y-2">
                                     <Skeleton class="h-4 w-full" />
@@ -312,7 +318,7 @@
                                 {/if}
                             </div>
                         </CardFooter>
-                    </Card>
+                    </div>
                 {/each}
             </div>
         </section>
@@ -324,7 +330,7 @@
                 <a href="https://x.com/chainyo_ai" class="text-[#ffaa40] hover:underline" target="_blank">X</a>
             </p>
             <p class="text-xs">
-                © {new Date().getFullYear()} chainyo.dev™ • All rights reserved
+                © {new Date().getFullYear()} chainyo.dev • All rights reserved
             </p>
         </footer>
     </div>
