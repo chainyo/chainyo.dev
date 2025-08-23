@@ -1,6 +1,6 @@
 <script lang="ts">
     import { toast } from "svelte-sonner";
-    import { Github, Loader } from "lucide-svelte";
+    import { ChevronRight, Github, Loader } from "lucide-svelte";
     import { Skeleton } from "$lib/components/ui/skeleton/index.js";
     import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "$lib/components/ui/card/index.js";
     import { Button } from "$lib/components/ui/button/index.js";
@@ -139,6 +139,8 @@
             window.open(project.url, '_blank');
         }
     };
+
+
 </script>
 
 <svelte:head>
@@ -175,16 +177,16 @@
     </script>
 </svelte:head>
 
-<div class="relative min-h-screen">
+<div class="relative min-h-screen overflow-x-hidden">
     <!-- Background Grid -->
     <FlickeringGrid
-        class="absolute inset-0 size-full opacity-30"
-        width={1920}
-        height={1080}
+        class="absolute inset-0 w-full h-full opacity-30"
+        width={2000}
+        height={1200}
         squareSize={4}
         gridGap={6}
         color="#6B7280"
-        maxOpacity={0.3}
+        maxOpacity={0.5}
         flickerChance={0.1}
     />
     
@@ -206,14 +208,14 @@
                         Thomas Chaigneau
                     </h1>
                     <p class="text-xl md:text-2xl text-muted-foreground leading-relaxed ml-2">
-                        <span class="text-foreground font-semibold">ML Engineer</span> turned <span class="text-[#ffaa40] font-semibold">indie hacker</span>.
+                        <span class="text-foreground font-semibold">ML Engineer</span> turned <span class="text-[#ffaa40] font-semibold">indie hacker</span>
                     </p>
                 </div>
             </div>
             
             <div class="text-center mb-8">
                 <p class="text-xl md:text-2xl text-foreground leading-relaxed">
-                    <span class="font-semibold">1 SaaS MVP <span class="underline decoration-[#ffaa40]">every month</span></span>,<br/>
+                    <span class="font-semibold">I build 1 SaaS MVP <span class="underline decoration-[#ffaa40]">every month</span></span><br/>
                     <span class="text-muted-foreground">until my savings cry (or I hit market fit 😂).</span>
                 </p>
             </div>
@@ -223,7 +225,8 @@
                     class="bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] text-white hover:opacity-90 transition-opacity px-8 py-3 text-lg"
                     on:click={() => window.open('https://x.com/chainyo_ai', '_blank')}
                 >
-                    Follow the Journey 🚀
+                    <ChevronRight />
+                    Follow the Quest
                 </Button>
                 <Button 
                     variant="secondary" size="icon"
@@ -234,11 +237,11 @@
             </div>
             
             <div class="text-center mt-4">
-                <svg class="w-4 h-4 mx-auto text-muted-foreground mb-1 animate-bounce" style="animation-duration: 2s;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 mx-auto text-muted-foreground mb-1 animate-bounce" style="animation-duration: 2s;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
                 </svg>
                 <p class="text-sm text-muted-foreground italic">
-                    no cap, just chaos and code 🫡
+                    includes code, screenshots and memes
                 </p>
             </div>
         </section>
@@ -314,9 +317,12 @@
         
         <!-- Footer -->
         <footer class="mt-16 text-center text-muted-foreground">
-            <p class="text-sm">
+            <p class="text-sm mb-4">
                 Building in public • One SaaS at a time • Follow along on 
                 <a href="https://x.com/chainyo_ai" class="text-[#ffaa40] hover:underline" target="_blank">X</a>
+            </p>
+            <p class="text-xs">
+                © {new Date().getFullYear()} chainyo.dev™ • All rights reserved
             </p>
         </footer>
     </div>
