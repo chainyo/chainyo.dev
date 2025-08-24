@@ -6,8 +6,17 @@
     import { Button } from "$lib/components/ui/button/index.js";
     import FlickeringGrid from "$lib/components/ui/FlickeringGrid.svelte";
 
-    // Project data - mix of real and placeholder projects
-    const projects = [
+    type ProjectStatus = 'skeleton' | 'building' | 'live';
+    type Project = {
+        id: number;
+        title: string;
+        description: string;
+        status: ProjectStatus;
+        url: string;
+        month: string;
+        mrr: number;
+    };
+    const projects: Project[] = [
         {
             id: 1,
             title: "Pomodobros",
@@ -79,43 +88,7 @@
             url: "#",
             month: "Apr 1st",
             mrr: 0
-        },
-        // {
-        //     id: 9,
-        //     title: "Project Nine",
-        //     description: "Coming soon...",
-        //     status: "skeleton",
-        //     url: "#",
-        //     month: "May 1st",
-        //     mrr: 0
-        // },
-        // {
-        //     id: 10,
-        //     title: "Project Ten",
-        //     description: "Coming soon...",
-        //     status: "skeleton",
-        //     url: "#",
-        //     month: "Jun 1st",
-        //     mrr: 0
-        // },
-        // {
-        //     id: 11,
-        //     title: "Project Eleven",
-        //     description: "Coming soon...",
-        //     status: "skeleton",
-        //     url: "#",
-        //     month: "Jul 1st",
-        //     mrr: 0
-        // },
-        // {
-        //     id: 12,
-        //     title: "Project Twelve",
-        //     description: "Coming soon...",
-        //     status: "skeleton",
-        //     url: "#",
-        //     month: "Aug 1st",
-        //     mrr: 0
-        // }
+        }
     ];
 
     const handleProjectClick = (project: typeof projects[0]) => {
@@ -206,15 +179,15 @@
             </div>
             
             <div class="text-center mb-8 mt-16">
-                <p class="text-2xl md:text-4xl text-foreground leading-relaxed">
-                    <span class="font-semibold">I build 1 SaaS MVP <span class="underline decoration-[#ffaa40]">every month</span></span><br/>
-                    <span class="text-muted-foreground text-2xl">until my savings cry (or I hit market fit 😂).</span>
+                <p class="text-foreground leading-relaxed">
+                    <span class="text-4xl md:text-6xl font-semibold">I build 1 SaaS MVP <span class="underline decoration-[#ffaa40]">every month</span></span><br/>
+                    <span class="text-muted-foreground text-2xl md:text-4xl">until my savings cry (or I hit market fit 😂).</span>
                 </p>
             </div>
             
             <div class="flex flex-row gap-2 justify-center items-center md:mt-8">
                 <Button 
-                    class="bg-linear-to-r from-[#ffaa40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 transition-all duration-200 px-8 py-3 text-lg" 
+                    class="bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 transition-all duration-200 px-8 py-3 text-lg" 
                     href="https://x.com/chainyo_ai"
                 >
                     <ChevronRight />
