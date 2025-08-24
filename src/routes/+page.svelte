@@ -91,53 +91,72 @@
         }
     ];
 
-    const handleProjectClick = (project: typeof projects[0]) => {
-        if (project.status === "skeleton") {
-            toast.warning(`${project.title} is coming on ${project.month}!`);
-        } else if (project.status === "building") {
-            toast.info(`${project.title} is currently in development!`);
-        } else if (project.status === "live" && project.url && project.url !== "#") {
-            window.open(project.url, '_blank');
-        } else if (project.url === "#" || !project.url) {
-            toast.info(`${project.title} isn't live yet! Stay tuned 👀`);
-        } else {
-            window.open(project.url, '_blank');
+    const handleProjectClick = (project: typeof projects[number]) => {
+        switch (project.status) {
+            case "skeleton":
+                toast.warning(`${project.title} is coming on ${project.month}!`);
+                break;
+            case "building":
+                toast.info(`${project.title} is currently in development!`);
+                break;
+            case "live":
+                if (project.url && project.url !== "#") {
+                    window.open(project.url, "_blank", "noopener,noreferrer");
+                } else {
+                    toast.info(`${project.title} isn't live yet! Stay tuned 👀`);
+                }
+                break;
         }
     };
-
-
 </script>
 
 <svelte:head>
     <title>Thomas Chaigneau | Founder Mode</title>
     <meta
         name="description"
-        content="ML Engineer embracing Founder Mode. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily."
+        content="ML Engineer embracing Founder Mode. One SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily."
     />
-    <meta name="keywords" content="indie hacker, saas, founder, mvp, ai, entrepreneur" />
+    <meta name="keywords" content="indie hacker, saas, founder, mvp, ai, entrepreneur, thomas chaigneau, chainyo, ml engineer, founder mode" />
     <meta name="author" content="Thomas Chaigneau" />
     <meta name="robots" content="index, follow" />
     <meta property="og:title" content="Thomas Chaigneau | Founder Mode" />
-    <meta property="og:description" content="ML Engineer embracing Founder Mode. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily." />
+    <meta property="og:description" content="ML Engineer embracing Founder Mode. One SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily." />
     <meta property="og:image" content="https://chainyo.dev/og-image.png" />
     <meta property="og:url" content="https://chainyo.dev" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="chainyo.dev" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@chainyo_ai" />
     <meta name="twitter:creator" content="@chainyo_ai" />
     <meta name="twitter:title" content="Thomas Chaigneau | Founder Mode" />
-    <meta name="twitter:description" content="ML Engineer embracing Founder Mode. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily." />
+    <meta name="twitter:description" content="ML Engineer embracing Founder Mode. One SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily." />
     <meta name="twitter:image" content="https://chainyo.dev/og-image.png" />
+    
+    <!-- Additional SEO meta tags -->
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="rating" content="General" />
+    <meta name="distribution" content="Global" />
+    
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Thomas Chaigneau",
-        "description": "ML Engineer embracing Founder Mode. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily.",
+        "alternateName": "chainyo",
+        "description": "ML Engineer embracing Founder Mode. One SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily.",
         "url": "https://chainyo.dev",
+        "image": "https://avatars.githubusercontent.com/u/50595514?v=4",
+        "jobTitle": "ML Engineer & Indie Hacker",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Independent"
+        },
         "sameAs": [
             "https://github.com/chainyo",
             "https://x.com/chainyo_ai"
-        ]
+        ],
+        "knowsAbout": ["Machine Learning", "SaaS Development", "Indie Hacking", "MVP Development"]
     }
     </script>
 </svelte:head>
@@ -180,26 +199,26 @@
             
             <div class="text-center mb-8 mt-16">
                 <p class="text-foreground leading-relaxed">
-                    <span class="text-4xl md:text-6xl font-semibold">I build 1 SaaS MVP <span class="underline decoration-[#ffaa40]">every month</span></span><br/>
+                    <span class="text-4xl md:text-6xl font-semibold">I build one SaaS MVP <span class="underline decoration-[#ffaa40]">every month</span></span><br/>
                     <span class="text-muted-foreground text-2xl md:text-4xl">until my savings cry (or I hit market fit 😂).</span>
                 </p>
             </div>
             
             <div class="flex flex-row gap-2 justify-center items-center md:mt-8">
                 <Button 
-                    class="bg-gradient-to-r from-[#ffaa40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 transition-all duration-200 px-8 py-3 text-lg" 
+                    class="bg-gradient-to-r from-[#ffaa40] via-[#ff6b40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 hover:shadow-lg transition-all duration-300 px-8 py-3 text-lg font-semibold" 
                     href="https://x.com/chainyo_ai"
                 >
-                    <ChevronRight />
+                    <ChevronRight class="ml-1 h-4 w-4" />
                     Follow the Quest
                 </Button>
                 <Button
                     variant="secondary" 
                     size="icon" 
                     href="https://github.com/chainyo"
-                    class="hover:scale-105 transition-all duration-200"
+                    class="hover:scale-105 hover:shadow-md transition-all duration-200"
                 >
-                    <Github />
+                    <Github class="h-4 w-4" />
                 </Button>
             </div>
             
