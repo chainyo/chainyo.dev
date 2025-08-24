@@ -136,30 +136,30 @@
 </script>
 
 <svelte:head>
-    <title>Thomas Chaigneau | Indie Hacker</title>
+    <title>Thomas Chaigneau | Founder Mode</title>
     <meta
         name="description"
-        content="ML Engineer turned indie hacker. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily."
+        content="ML Engineer embracing Founder Mode. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily."
     />
-    <meta name="keywords" content="indie hacker, saas, mvp, machine learning, ai, entrepreneur" />
+    <meta name="keywords" content="indie hacker, saas, founder, mvp, ai, entrepreneur" />
     <meta name="author" content="Thomas Chaigneau" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Thomas Chaigneau | Indie Hacker" />
-    <meta property="og:description" content="ML Engineer turned indie hacker. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily." />
+    <meta property="og:title" content="Thomas Chaigneau | Founder Mode" />
+    <meta property="og:description" content="ML Engineer embracing Founder Mode. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily." />
     <meta property="og:image" content="https://chainyo.dev/og-image.png" />
     <meta property="og:url" content="https://chainyo.dev" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@chainyo_ai" />
     <meta name="twitter:creator" content="@chainyo_ai" />
-    <meta name="twitter:title" content="Thomas Chaigneau | Indie Hacker" />
-    <meta name="twitter:description" content="ML Engineer turned indie hacker. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily." />
+    <meta name="twitter:title" content="Thomas Chaigneau | Founder Mode" />
+    <meta name="twitter:description" content="ML Engineer embracing Founder Mode. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily." />
     <meta name="twitter:image" content="https://chainyo.dev/og-image.png" />
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Thomas Chaigneau",
-        "description": "ML Engineer turned indie hacker. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily.",
+        "description": "ML Engineer embracing Founder Mode. 1 SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily.",
         "url": "https://chainyo.dev",
         "sameAs": [
             "https://github.com/chainyo",
@@ -196,17 +196,17 @@
                 </div>
                 
                 <div class="text-center md:text-left">
-                    <h1 class="text-4xl md:text-6xl font-bold text-foreground mb-4">
+                    <h1 class="text-xl md:text-2xl font-bold text-foreground mb-4">
                         Thomas Chaigneau
                     </h1>
-                    <p class="text-xl md:text-2xl text-muted-foreground leading-relaxed ml-2">
-                        <span class="text-foreground font-semibold">ML Engineer</span> turned <span class="text-[#ffaa40] font-semibold">indie hacker</span>
+                    <p class="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                        <span class="text-foreground font-semibold">ML Engineer</span> embracing <span class="text-[#ffaa40] font-semibold">Founder Mode</span>
                     </p>
                 </div>
             </div>
             
             <div class="text-center mb-8">
-                <p class="text-xl md:text-2xl text-foreground leading-relaxed">
+                <p class="text-xl md:text-4xl text-foreground leading-relaxed">
                     <span class="font-semibold">I build 1 SaaS MVP <span class="underline decoration-[#ffaa40]">every month</span></span><br/>
                     <span class="text-muted-foreground">until my savings cry (or I hit market fit 😂).</span>
                 </p>
