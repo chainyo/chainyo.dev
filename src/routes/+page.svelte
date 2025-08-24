@@ -207,17 +207,22 @@
             
             <div class="flex flex-row gap-2 justify-center items-center md:mt-8">
                 <Button 
-                    class="bg-gradient-to-r from-[#ffaa40] via-[#ff6b40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 hover:shadow-lg transition-all duration-300 px-8 py-3 text-lg font-semibold group relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#ffaa40] motion-reduce:transition-none motion-reduce:transform-none"
+                    class="bg-gradient-to-r from-[#ffaa40] via-[#ff6b40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 hover:shadow-lg transform-gpu transition-[transform,box-shadow,opacity] duration-300 motion-reduce:transform-none motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background px-8 py-3 text-lg font-semibold group relative overflow-hidden"
                     href="https://x.com/chainyo_ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow the Quest on X"
                 >
-                    <ChevronRight aria-hidden="true" class="absolute left-3 top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:left-[calc(100%-2rem)] group-focus:left-[calc(100%-2rem)] motion-reduce:left-3" />
-                    <span class="transition-transform duration-300 group-hover:-translate-x-4 group-focus:-translate-x-4 motion-reduce:transform-none">Follow the Quest</span>
+                    <ChevronRight aria-hidden="true" focusable="false" class="absolute left-3 top-1/2 -translate-y-1/2 transition-[left] duration-300 group-hover:left-[calc(100%-theme(spacing.8))] motion-reduce:left-3 motion-reduce:transition-none" />
+                    <span class="transition-transform duration-300 group-hover:-translate-x-4 motion-reduce:transform-none">Follow the Quest</span>
                 </Button>
                 <Button
                     variant="secondary" 
                     size="icon" 
                     href="https://github.com/chainyo"
                     class="hover:scale-105 hover:shadow-md transition-all duration-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label="Open GitHub profile"
                 >
                     <Github class="h-4 w-4" />
@@ -239,7 +244,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {#each projects as project (project.id)}
                     <div 
-                        class={`hover:shadow-lg md:hover:-translate-y-2 hover:scale-[1.02] transform-gpu transition-transform duration-200 motion-reduce:transform-none motion-reduce:transition-none cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-500/50' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
+                        class={`hover:shadow-lg md:hover:-translate-y-2 hover:scale-[1.02] transform-gpu transition-[transform,box-shadow] duration-200 motion-reduce:transform-none motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffaa40]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-500/50' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
                         role="button"
                         tabindex="0"
                         onclick={() => handleProjectClick(project)}
