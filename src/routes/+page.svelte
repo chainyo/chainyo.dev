@@ -133,6 +133,7 @@
     <meta name="twitter:image" content="https://chainyo.dev/og-image.png" />
     
     <!-- Additional SEO meta tags -->
+    <link rel="canonical" href="https://chainyo.dev" />
     <meta name="language" content="English" />
     <meta name="revisit-after" content="7 days" />
     <meta name="rating" content="General" />
@@ -217,6 +218,7 @@
                     size="icon" 
                     href="https://github.com/chainyo"
                     class="hover:scale-105 hover:shadow-md transition-all duration-200"
+                    aria-label="Open GitHub profile"
                 >
                     <Github class="h-4 w-4" />
                 </Button>
