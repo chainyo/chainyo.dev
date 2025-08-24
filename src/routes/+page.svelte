@@ -239,7 +239,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {#each projects as project (project.id)}
                     <div 
-                        class={`hover:shadow-lg md:hover:-translate-y-2 hover:scale-102 transition-all duration-200 cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-500/50' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
+                        class={`hover:shadow-lg md:hover:-translate-y-2 hover:scale-[1.02] transform-gpu transition-transform duration-200 motion-reduce:transform-none motion-reduce:transition-none cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-500/50' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
                         role="button"
                         tabindex="0"
                         onclick={() => handleProjectClick(project)}
