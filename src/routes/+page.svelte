@@ -80,42 +80,42 @@
             month: "Apr 1st",
             mrr: 0
         },
-        {
-            id: 9,
-            title: "Project Nine",
-            description: "Coming soon...",
-            status: "skeleton",
-            url: "#",
-            month: "May 1st",
-            mrr: 0
-        },
-        {
-            id: 10,
-            title: "Project Ten",
-            description: "Coming soon...",
-            status: "skeleton",
-            url: "#",
-            month: "Jun 1st",
-            mrr: 0
-        },
-        {
-            id: 11,
-            title: "Project Eleven",
-            description: "Coming soon...",
-            status: "skeleton",
-            url: "#",
-            month: "Jul 1st",
-            mrr: 0
-        },
-        {
-            id: 12,
-            title: "Project Twelve",
-            description: "Coming soon...",
-            status: "skeleton",
-            url: "#",
-            month: "Aug 1st",
-            mrr: 0
-        }
+        // {
+        //     id: 9,
+        //     title: "Project Nine",
+        //     description: "Coming soon...",
+        //     status: "skeleton",
+        //     url: "#",
+        //     month: "May 1st",
+        //     mrr: 0
+        // },
+        // {
+        //     id: 10,
+        //     title: "Project Ten",
+        //     description: "Coming soon...",
+        //     status: "skeleton",
+        //     url: "#",
+        //     month: "Jun 1st",
+        //     mrr: 0
+        // },
+        // {
+        //     id: 11,
+        //     title: "Project Eleven",
+        //     description: "Coming soon...",
+        //     status: "skeleton",
+        //     url: "#",
+        //     month: "Jul 1st",
+        //     mrr: 0
+        // },
+        // {
+        //     id: 12,
+        //     title: "Project Twelve",
+        //     description: "Coming soon...",
+        //     status: "skeleton",
+        //     url: "#",
+        //     month: "Aug 1st",
+        //     mrr: 0
+        // }
     ];
 
     const handleProjectClick = (project: typeof projects[0]) => {
@@ -170,11 +170,11 @@
 </svelte:head>
 
 <div class="relative min-h-screen overflow-x-hidden">
-    <!-- Background Grid -->
+    <!-- NOTE: Update the height to match the page size -->
     <FlickeringGrid
         class="absolute inset-0 w-full h-full opacity-30"
         width={2000}
-        height={1470}
+        height={1280}
         squareSize={4}
         gridGap={6}
         color="#6B7280"
@@ -205,16 +205,16 @@
                 </div>
             </div>
             
-            <div class="text-center mb-8">
-                <p class="text-xl md:text-4xl text-foreground leading-relaxed">
+            <div class="text-center mb-8 mt-16">
+                <p class="text-2xl md:text-4xl text-foreground leading-relaxed">
                     <span class="font-semibold">I build 1 SaaS MVP <span class="underline decoration-[#ffaa40]">every month</span></span><br/>
-                    <span class="text-muted-foreground">until my savings cry (or I hit market fit 😂).</span>
+                    <span class="text-muted-foreground text-2xl">until my savings cry (or I hit market fit 😂).</span>
                 </p>
             </div>
             
-            <div class="flex flex-row gap-2 justify-center items-center md:mt-16">
+            <div class="flex flex-row gap-2 justify-center items-center md:mt-8">
                 <Button 
-                    class="bg-linear-to-r from-[#ffaa40] to-[#9c40ff] text-white hover:opacity-90 transition-opacity px-8 py-3 text-lg" 
+                    class="bg-linear-to-r from-[#ffaa40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 transition-all duration-200 px-8 py-3 text-lg" 
                     href="https://x.com/chainyo_ai"
                 >
                     <ChevronRight />
@@ -224,6 +224,7 @@
                     variant="secondary" 
                     size="icon" 
                     href="https://github.com/chainyo"
+                    class="hover:scale-105 transition-all duration-200"
                 >
                     <Github />
                 </Button>
@@ -244,7 +245,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {#each projects as project}
                     <div 
-                        class={`hover:shadow-lg transition-shadow cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-500/50' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
+                        class={`hover:shadow-lg hover:-translate-y-1 transition-all duration-200 cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-500/50' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
                         role="button"
                         tabindex="0"
                         onclick={() => handleProjectClick(project)}
