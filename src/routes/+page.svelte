@@ -323,7 +323,7 @@
         <footer class="mt-16 text-center text-muted-foreground">
             <p class="text-sm mb-4">
                 Building in public • One SaaS at a time • Follow along on 
-                <a href="https://x.com/chainyo_ai" class="text-[#ffaa40] hover:underline" target="_blank">X</a>
+                <a href="https://x.com/chainyo_ai" class="text-[#ffaa40] hover:underline" target="_blank" rel="noopener noreferrer">X</a>
             </p>
             <p class="text-xs">
                 © {new Date().getFullYear()} chainyo.dev • All rights reserved
