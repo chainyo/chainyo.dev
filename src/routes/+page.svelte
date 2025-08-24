@@ -207,11 +207,11 @@
             
             <div class="flex flex-row gap-2 justify-center items-center md:mt-8">
                 <Button 
-                    class="bg-gradient-to-r from-[#ffaa40] via-[#ff6b40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 hover:shadow-lg transition-all duration-300 px-8 py-3 text-lg font-semibold group relative overflow-hidden" 
+                    class="bg-gradient-to-r from-[#ffaa40] via-[#ff6b40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 hover:shadow-lg transition-all duration-300 px-8 py-3 text-lg font-semibold group relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#ffaa40] motion-reduce:transition-none motion-reduce:transform-none"
                     href="https://x.com/chainyo_ai"
                 >
-                    <ChevronRight class="absolute left-3 top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:left-[calc(100%-2rem)]" />
-                    <span class="transition-transform duration-300 group-hover:-translate-x-4">Follow the Quest</span>
+                    <ChevronRight aria-hidden="true" class="absolute left-3 top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:left-[calc(100%-2rem)] group-focus:left-[calc(100%-2rem)] motion-reduce:left-3" />
+                    <span class="transition-transform duration-300 group-hover:-translate-x-4 group-focus:-translate-x-4 motion-reduce:transform-none">Follow the Quest</span>
                 </Button>
                 <Button
                     variant="secondary" 
