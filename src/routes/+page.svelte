@@ -207,11 +207,11 @@
             
             <div class="flex flex-row gap-2 justify-center items-center md:mt-8">
                 <Button 
-                    class="bg-gradient-to-r from-[#ffaa40] via-[#ff6b40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 hover:shadow-lg transition-all duration-300 px-8 py-3 text-lg font-semibold" 
+                    class="bg-gradient-to-r from-[#ffaa40] via-[#ff6b40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 hover:shadow-lg transition-all duration-300 px-8 py-3 text-lg font-semibold group relative overflow-hidden" 
                     href="https://x.com/chainyo_ai"
                 >
-                    <ChevronRight class="ml-1 h-4 w-4" />
-                    Follow the Quest
+                    <ChevronRight class="absolute left-3 top-1/2 -translate-y-1/2 transition-all duration-300 group-hover:left-[calc(100%-2rem)]" />
+                    <span class="transition-transform duration-300 group-hover:-translate-x-4">Follow the Quest</span>
                 </Button>
                 <Button
                     variant="secondary" 
@@ -237,9 +237,9 @@
         <!-- Projects Grid -->
         <section class="mt-32">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {#each projects as project}
+                {#each projects as project (project.id)}
                     <div 
-                        class={`hover:shadow-lg hover:-translate-y-1 transition-all duration-200 cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-500/50' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
+                        class={`hover:shadow-lg md:hover:-translate-y-2 hover:scale-102 transition-all duration-200 cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-500/50' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
                         role="button"
                         tabindex="0"
                         onclick={() => handleProjectClick(project)}
