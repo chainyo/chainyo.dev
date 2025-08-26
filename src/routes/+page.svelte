@@ -20,7 +20,7 @@
         {
             id: 1,
             title: "Pomodobros",
-            description: "A minimal IDE extension for focused devs. Stay in flow, one 🍅 at a time.",
+            description: "Stay in flow, stay accountable — focus with a community that actually gets it.",
             status: "building",
             url: "#",
             month: "Sep 1st",
