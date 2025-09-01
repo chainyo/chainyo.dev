@@ -19,10 +19,10 @@
     const projects: Project[] = [
         {
             id: 1,
-            title: "Pomodobros",
-            description: "Stay in flow, stay accountable — focus with a community that actually gets it.",
-            status: "building",
-            url: "#",
+            title: "🍅 Pomodobros",
+            description: "Turn solo procrastination into shared productivity. Focus with people who get it.",
+            status: "live",
+            url: "https://pomodobros.com",
             month: "Sep 1st",
             mrr: 0
         },
@@ -244,7 +244,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {#each projects as project (project.id)}
                     <div 
-                        class={`hover:shadow-lg md:hover:-translate-y-2 hover:scale-[1.02] transform-gpu transition-[transform,box-shadow] duration-200 motion-reduce:transform-none motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffaa40]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-500/50' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
+                        class={`hover:shadow-lg md:hover:-translate-y-2 hover:scale-[1.02] transform-gpu transition-[transform,box-shadow] duration-200 motion-reduce:transform-none motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffaa40]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-300' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
                         role="button"
                         tabindex="0"
                         onclick={() => handleProjectClick(project)}
@@ -269,11 +269,11 @@
                             </div>
                         {:else if project.status === 'live'}
                             <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                                <span class="relative text-xs text-lime-600 dark:text-lime-400 px-3 py-1 rounded font-medium flex items-center shadow-lg overflow-hidden">
+                                <span class="relative text-xs text-lime-600 dark:text-lime-800 px-3 py-1 rounded font-medium flex items-center shadow-lg overflow-hidden">
                                     <div class="absolute inset-0 bg-background"></div>
-                                    <div class="absolute inset-0 bg-lime-500/10 dark:bg-lime-500/20"></div>
+                                    <div class="absolute inset-0 bg-lime-500/10 dark:bg-lime-300"></div>
                                     <div class="relative flex items-center">
-                                        <div class="w-2 h-2 bg-lime-600 dark:bg-lime-400 rounded-full mr-1 animate-pulse"></div>
+                                        <div class="w-2 h-2 bg-lime-600 dark:bg-lime-800 rounded-full mr-1 animate-pulse"></div>
                                         Live
                                     </div>
                                 </span>
