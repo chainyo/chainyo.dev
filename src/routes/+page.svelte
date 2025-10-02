@@ -28,10 +28,10 @@
         },
         {
             id: 2,
-            title: "Project Two", 
-            description: "Coming soon...",
-            status: "skeleton",
-            url: "#",
+            title: "✂️ MowPrompt", 
+            description: "Clean, compress and optimize user prompts before they hit your model.",
+            status: "live",
+            url: "https://mowprompt.com",
             month: "Oct 1st",
             mrr: 0
         },
