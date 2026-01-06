@@ -5,10 +5,10 @@
 
 <section>
   <div class="mx-auto max-w-5xl px-6 py-8">
-    <div class="flex flex-wrap items-center gap-4">
-      <p class="text-muted-foreground font-medium">Favorite stack:</p>
+    <div class="flex flex-nowrap items-center gap-4 overflow-x-auto">
+      <p class="whitespace-nowrap text-muted-foreground font-medium">Favorite stack:</p>
       <Tooltip.Provider delayDuration={0}>
-        <div class="max-w-2xs flex flex-wrap items-center gap-3 divide-x *:pr-3">
+        <div class="flex flex-none flex-nowrap items-center gap-3 divide-x *:pr-3">
           <Tooltip.Root>
             <Tooltip.Trigger>
               {#snippet child({ props })}

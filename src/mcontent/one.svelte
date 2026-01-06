@@ -217,8 +217,13 @@
       class="mt-10 space-y-8 border-t border-[#e3d5c8]/70 pt-0 sm:space-y-0 sm:divide-y sm:divide-[#e3d5c8]/70"
     >
       <div class="grid gap-8 sm:grid-cols-5 sm:divide-x sm:divide-[#e3d5c8]/70">
-        {@render CodeIllustration({ _class: "sm:col-span-2", items: focusTags })}
-        <div class="text-center sm:col-span-3 sm:border-l sm:border-[#e3d5c8]/70 sm:py-6 sm:pl-12 sm:text-left">
+        {@render CodeIllustration({
+          _class: "order-2 sm:order-1 sm:col-span-2",
+          items: focusTags,
+        })}
+        <div
+          class="order-1 text-left sm:order-2 sm:col-span-3 sm:border-l sm:border-[#e3d5c8]/70 sm:py-6 sm:pl-12 sm:text-left"
+        >
           <h3 class="text-base font-semibold text-[#1d1a16]">Current mission</h3>
           <p class="text-xl text-[#4a423a]">
             Founding AI Engineer at
@@ -241,7 +246,7 @@
         </div>
       </div>
       <div class="grid gap-8 sm:grid-cols-5 sm:divide-x sm:divide-[#e3d5c8]/70">
-        <div class="pt-8 text-center sm:col-span-3 sm:border-r sm:border-[#e3d5c8]/70 sm:pl-14 sm:pr-12 sm:pt-10 sm:text-left">
+        <div class="pt-8 text-left sm:col-span-3 sm:border-r sm:border-[#e3d5c8]/70 sm:pl-14 sm:pr-12 sm:pt-10 sm:text-left">
           <h3 class="text-base font-semibold text-[#1d1a16]">How I work</h3>
           <p class="text-sm text-[#4a423a]">
             <span
@@ -253,7 +258,7 @@
             </span>
           </p>
         </div>
-        <div class="row-start-1 flex items-center justify-center pt-8 sm:col-span-2 sm:row-start-auto sm:pt-10">
+        <div class="flex items-center justify-center pt-8 sm:col-span-2 sm:pt-10">
           {@render ProgressIllustration({ _class: "w-full max-w-xs sm:max-w-none" })}
         </div>
       </div>

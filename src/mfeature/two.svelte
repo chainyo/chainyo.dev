@@ -29,7 +29,7 @@
         Side products
       </p>
 
-      <div class="mt-8 grid gap-4 sm:grid-cols-2 md:mt-16 md:grid-cols-3">
+      <div class="mt-8 grid gap-8 sm:grid-cols-2 sm:gap-6 md:mt-16 md:grid-cols-3">
         {#each projects as project}
           <a
             class="group flex h-full flex-col gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d97c35]/60"
@@ -42,7 +42,7 @@
               style={`background-image: url('${project.image}');`}
               aria-hidden="true"
             ></div>
-            <div class="sm:max-w-sm">
+            <div class="w-full px-2 sm:max-w-sm">
               <h3 class="font-display text-xl text-[#1d1a16]">{project.name}</h3>
               <p class="mt-3 text-sm leading-relaxed text-[#4a423a]">
                 {project.description}
