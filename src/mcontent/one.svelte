@@ -227,7 +227,7 @@
           <h3 class="text-base font-semibold text-[#1d1a16]">Current mission</h3>
           <p class="text-xl text-[#4a423a]">
             Founding AI Engineer
-            <span class="block sm:inline sm:ml-2">
+            <span class="block sm:inline">
               at
               <a
                 href="https://www.elys-health.com/"
