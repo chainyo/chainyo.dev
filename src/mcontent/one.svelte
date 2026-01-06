@@ -266,10 +266,10 @@
 }: IllustrationProps)}
   <div
     class={cn("w-full", _class)}
+    role="group"
+    aria-label="Delivery progress timeline"
     on:mouseenter={pauseProgress}
     on:mouseleave={resumeProgress}
-    on:focusin={pauseProgress}
-    on:focusout={resumeProgress}
   >
     <div class="relative h-16">
       <Progress
@@ -329,6 +329,8 @@
     <div
       class="loop-container group relative mx-auto w-fit"
       style={`--item-count: ${items.length || 1}; --item-size: 2rem; --visible-count: 5;`}
+      role="group"
+      aria-label="Focus areas loop"
       on:mouseenter={pauseLoop}
       on:mouseleave={resumeLoop}
     >
