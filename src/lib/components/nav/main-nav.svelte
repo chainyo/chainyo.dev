@@ -1,8 +1,12 @@
 <script lang="ts">
-    import { Package } from "lucide-svelte";
+    import { Package } from "@lucide/svelte";
 	import { page } from "$app/stores";
 	import { siteConfig } from "$lib/config/site.js";
 	import { cn } from "$lib/utils.js";
+
+	let pathname = "";
+
+	$: pathname = $page.url.pathname;
 </script>
 
 <div class="mr-4 hidden md:flex">
@@ -17,7 +21,7 @@
 			href="/docs"
 			class={cn(
 				"hover:text-foreground/80 transition-colors",
-				$page.url.pathname === "/docs" ? "text-foreground" : "text-foreground/60"
+				pathname.startsWith("/docs") ? "text-foreground" : "text-foreground/60"
 			)}
 		>
 			Docs
@@ -26,7 +30,7 @@
 			href="/docs/components"
 			class={cn(
 				"hover:text-foreground/80 transition-colors",
-				$page.url.pathname.startsWith("/docs/components")
+				pathname.startsWith("/docs/components")
 					? "text-foreground"
 					: "text-foreground/60"
 			)}
@@ -37,7 +41,7 @@
 			href="/themes"
 			class={cn(
 				"hover:text-foreground/80 transition-colors",
-				$page.url.pathname.startsWith("/themes") ? "text-foreground" : "text-foreground/60"
+				pathname.startsWith("/themes") ? "text-foreground" : "text-foreground/60"
 			)}
 		>
 			Themes
@@ -46,7 +50,7 @@
 			href="/examples"
 			class={cn(
 				"hover:text-foreground/80 transition-colors",
-				$page.url.pathname.startsWith("/examples")
+				pathname.startsWith("/examples")
 					? "text-foreground"
 					: "text-foreground/60"
 			)}
@@ -58,7 +62,7 @@
 			href="/blocks"
 			class={cn(
 				"hover:text-foreground/80 transition-colors",
-				$page.url.pathname.startsWith("/blocks") ? "text-foreground" : "text-foreground/60"
+				pathname.startsWith("/blocks") ? "text-foreground" : "text-foreground/60"
 			)}
 		>
 			Blocks
@@ -67,7 +71,7 @@
 			href="/colors"
 			class={cn(
 				"hover:text-foreground/80 transition-colors",
-				$page.url.pathname.startsWith("/colors") ? "text-foreground" : "text-foreground/60"
+				pathname.startsWith("/colors") ? "text-foreground" : "text-foreground/60"
 			)}
 		>
 			Colors

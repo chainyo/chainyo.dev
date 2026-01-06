@@ -6,8 +6,8 @@
     export let gridGap: number = 6;
     export let flickerChance: number = 0.3;
     export let color = "rgb(0, 0, 0)";
-    export let width: number;
-    export let height: number;
+    export let width: number | undefined = undefined;
+    export let height: number | undefined = undefined;
     let className = "";
     export { className as class };
   
@@ -88,7 +88,7 @@
       }
     }
   
-    let animationFrameId;
+    let animationFrameId: number | null = null;
   
     onMount(() => {
       console.log("canvas", canvas);
@@ -149,7 +149,9 @@
   
       return () => {
         window.removeEventListener("resize", handleResize);
-        cancelAnimationFrame(animationFrameId);
+        if (animationFrameId !== null) {
+          cancelAnimationFrame(animationFrameId);
+        }
         observer.disconnect();
         unsubscribe();
       };

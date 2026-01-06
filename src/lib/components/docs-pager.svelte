@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ChevronLeft, ChevronRight } from "lucide-svelte";
+    import { ChevronLeft, ChevronRight } from "@lucide/svelte";
 	import type { NavItem, NavItemWithChildren } from "$lib/types/nav.js";
 	import { page } from "$app/stores";
 	import { Button } from "$lib/components/ui/button/index.js";
