@@ -1,126 +1,83 @@
 <script lang="ts">
-    import { toast } from "svelte-sonner";
-    import { ChevronRight, Github, Loader } from "@lucide/svelte";
-    import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-    import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "$lib/components/ui/card/index.js";
+    import { ArrowUpRight, Linkedin, Mail } from "@lucide/svelte";
+    import { onMount } from "svelte";
+    import { fade } from "svelte/transition";
     import { Button } from "$lib/components/ui/button/index.js";
     import FlickeringGrid from "$lib/components/ui/FlickeringGrid.svelte";
+    import FavoriteTools from "../mintegration/one.svelte";
+    import NowWorkBlock from "../mcontent/one.svelte";
 
-    type ProjectStatus = 'skeleton' | 'building' | 'live';
-    type Project = {
-        id: number;
-        title: string;
-        description: string;
-        status: ProjectStatus;
-        url: string;
-        month: string;
-        mrr: number;
+    const links = {
+        linkedin: "https://www.linkedin.com/in/chainyo/",
+        x: "https://x.com/chainyo_ai"
     };
-    const projects: Project[] = [
+
+    let showEmail = false;
+
+    const revealEmail = () => {
+        showEmail = true;
+    };
+
+    const primaryProduct = {
+        name: "LocalClip.app",
+        description:
+            "Drop a recording. Local Clip finds the highlights, writes captions, and exports platform-ready clips without uploading a byte.",
+        url: "https://localclip.app",
+        tags: ["Local-first", "Creator tooling", "AI-assisted"]
+    };
+
+    const sideProducts = [
         {
-            id: 1,
-            title: "🍅 Pomodobros",
-            description: "Turn solo procrastination into shared productivity. Focus with people who get it.",
-            status: "live",
-            url: "https://pomodobros.com",
-            month: "Sep 1st",
-            mrr: 0
+            name: "Pomodobros",
+            description: "Turn solo procrastination into shared productivity.",
+            url: "https://pomodobros.com"
         },
         {
-            id: 2,
-            title: "✂️ MowPrompt", 
-            description: "Clean, compress and optimize user prompts before they hit your model.",
-            status: "live",
-            url: "https://mowprompt.com",
-            month: "Oct 1st",
-            mrr: 0
-        },
-        {
-            id: 3,
-            title: "Project Three",
-            description: "Coming soon...",
-            status: "skeleton", 
-            url: "#",
-            month: "Nov 1st",
-            mrr: 0
-        },
-        {
-            id: 4,
-            title: "Project Four",
-            description: "Coming soon...",
-            status: "skeleton",
-            url: "#",
-            month: "Dec 1st",
-            mrr: 0
-        },
-        {
-            id: 5,
-            title: "Project Five",
-            description: "Coming soon...",
-            status: "skeleton",
-            url: "#", 
-            month: "Jan 1st",
-            mrr: 0
-        },
-        {
-            id: 6,
-            title: "Project Six",
-            description: "Coming soon...",
-            status: "skeleton",
-            url: "#",
-            month: "Feb 1st",
-            mrr: 0
-        },
-        {
-            id: 7,
-            title: "Project Seven",
-            description: "Coming soon...",
-            status: "skeleton",
-            url: "#",
-            month: "Mar 1st",
-            mrr: 0
-        },
-        {
-            id: 8,
-            title: "Project Eight", 
-            description: "Coming soon...",
-            status: "skeleton",
-            url: "#",
-            month: "Apr 1st",
-            mrr: 0
+            name: "MowPrompt",
+            description: "Clean and compress prompts before they hit your model.",
+            url: "https://mowprompt.com"
         }
     ];
 
-    const handleProjectClick = (project: typeof projects[number]) => {
-        switch (project.status) {
-            case "skeleton":
-                toast.warning(`${project.title} is coming on ${project.month}!`);
-                break;
-            case "building":
-                toast.info(`${project.title} is currently in development!`);
-                break;
-            case "live":
-                if (project.url && project.url !== "#") {
-                    window.open(project.url, "_blank", "noopener,noreferrer");
-                } else {
-                    toast.info(`${project.title} isn't live yet! Stay tuned 👀`);
-                }
-                break;
+    const rotatingWords = ["Reliability", "Clarity", "Simplicity"];
+    let rotatingIndex = 0;
+    let rotatingWord = rotatingWords[rotatingIndex];
+
+    onMount(() => {
+        const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+        if (media.matches) {
+            return;
         }
-    };
+
+        const intervalId = window.setInterval(() => {
+            rotatingIndex = (rotatingIndex + 1) % rotatingWords.length;
+            rotatingWord = rotatingWords[rotatingIndex];
+        }, 1800);
+
+        return () => {
+            window.clearInterval(intervalId);
+        };
+    });
+
 </script>
 
 <svelte:head>
-    <title>Thomas Chaigneau | Founder Mode</title>
+    <title>Thomas Chaigneau — Founder-minded AI Engineer</title>
     <meta
         name="description"
-        content="ML Engineer embracing Founder Mode. One SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily."
+        content="Founder-minded AI engineer building production-grade systems for companies with real-world stakes. Founding AI Engineer at Elys Health, shipping LocalClip.app."
     />
-    <meta name="keywords" content="indie hacker, saas, founder, mvp, ai, entrepreneur, thomas chaigneau, chainyo, ml engineer, founder mode" />
+    <meta
+        name="keywords"
+        content="founder-minded ai engineer, founding ai engineer, b2b ai systems, production ai, llm infrastructure, elys health, localclip"
+    />
     <meta name="author" content="Thomas Chaigneau" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Thomas Chaigneau | Founder Mode" />
-    <meta property="og:description" content="ML Engineer embracing Founder Mode. One SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily." />
+    <meta property="og:title" content="Thomas Chaigneau — Founder-minded AI Engineer" />
+    <meta
+        property="og:description"
+        content="Founder-minded AI engineer building production-grade systems for companies with real-world stakes. Founding AI Engineer at Elys Health, shipping LocalClip.app."
+    />
     <meta property="og:image" content="https://chainyo.dev/og-image.png" />
     <meta property="og:url" content="https://chainyo.dev" />
     <meta property="og:type" content="website" />
@@ -128,211 +85,234 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@chainyo_ai" />
     <meta name="twitter:creator" content="@chainyo_ai" />
-    <meta name="twitter:title" content="Thomas Chaigneau | Founder Mode" />
-    <meta name="twitter:description" content="ML Engineer embracing Founder Mode. One SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily." />
+    <meta name="twitter:title" content="Thomas Chaigneau — Founder-minded AI Engineer" />
+    <meta
+        name="twitter:description"
+        content="Founder-minded AI engineer building production-grade systems for companies with real-world stakes. Founding AI Engineer at Elys Health, shipping LocalClip.app."
+    />
     <meta name="twitter:image" content="https://chainyo.dev/og-image.png" />
-    
-    <!-- Additional SEO meta tags -->
+
     <link rel="canonical" href="https://chainyo.dev" />
     <meta name="language" content="English" />
     <meta name="revisit-after" content="7 days" />
     <meta name="rating" content="General" />
     <meta name="distribution" content="Global" />
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Thomas Chaigneau",
         "alternateName": "chainyo",
-        "description": "ML Engineer embracing Founder Mode. One SaaS a month, every month, until my savings cry (or I hit market fit 😂). I share the journey daily.",
+        "description": "Founder-minded AI engineer building production-grade systems for companies with real-world stakes. Founding AI Engineer at Elys Health, shipping LocalClip.app.",
         "url": "https://chainyo.dev",
         "image": "https://avatars.githubusercontent.com/u/50595514?v=4",
-        "jobTitle": "ML Engineer & Indie Hacker",
+        "jobTitle": "Founder-minded AI Engineer",
         "worksFor": {
             "@type": "Organization",
-            "name": "Independent"
+            "name": "CHNY Software SASU"
         },
         "sameAs": [
             "https://github.com/chainyo",
-            "https://x.com/chainyo_ai"
+            "https://x.com/chainyo_ai",
+            "https://www.linkedin.com/in/thomas-chaigneau"
         ],
-        "knowsAbout": ["Machine Learning", "SaaS Development", "Indie Hacking", "MVP Development"]
+        "knowsAbout": [
+            "Production AI Systems",
+            "LLM Infrastructure",
+            "B2B AI Engineering",
+            "Product Engineering"
+        ]
     }
     </script>
 </svelte:head>
 
-<div class="relative min-h-screen overflow-x-hidden">
-    <!-- NOTE: Update the height to match the page size -->
+<div class="relative min-h-screen overflow-hidden bg-[#f8f4ee] text-[#1d1a16]">
+    <div class="pointer-events-none absolute inset-0">
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_top,_#f3dcc2_0%,_#f8f4ee_45%,_#eef2f5_100%)]"
+        ></div>
+        <div
+            class="absolute -top-24 right-0 h-96 w-96 rounded-full bg-[#e6b28a]/40 blur-3xl"
+        ></div>
+        <div
+            class="absolute -bottom-32 left-0 h-96 w-96 rounded-full bg-[#b7d7d9]/35 blur-3xl"
+        ></div>
+    </div>
+
     <FlickeringGrid
-        class="absolute inset-0 w-full h-full opacity-30"
+        class="absolute inset-0 h-full w-full opacity-25"
         width={2000}
-        height={1280}
+        height={1400}
         squareSize={4}
         gridGap={6}
-        color="#6B7280"
-        maxOpacity={0.5}
-        flickerChance={0.1}
+        color="#bda995"
+        maxOpacity={0.4}
+        flickerChance={0.08}
     />
-    
-    <!-- Main Content -->
-    <div class="relative z-10 container mx-auto px-4 py-12">
-        <!-- Hero Section -->
-        <section class="mb-16 mt-8 lg:mt-16">
-            <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-8 max-w-fit mx-auto">
-                <div class="shrink-0">
-                    <img
-                        src="https://avatars.githubusercontent.com/u/50595514?v=4"
-                        alt="Thomas Chaigneau"
-                        class="size-32 rounded-full border-2 border-gray-300 shadow-lg"
-                    />
+
+    <main class="relative z-10 mx-auto max-w-6xl px-6 pb-24 pt-16 lg:pt-24">
+        <header class="flex flex-col items-center gap-6 text-center">
+            <div class="flex flex-col items-center gap-4">
+                <img
+                    src="https://avatars.githubusercontent.com/u/50595514?v=4"
+                    alt="Thomas Chaigneau"
+                    class="h-20 w-20 rounded-full border border-[#d9c9b6] shadow-lg"
+                />
+                <p class="text-xs uppercase tracking-[0.3em] text-[#3a332d]">
+                    Thomas Chaigneau
+                </p>
+                <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl">
+                    Founder-minded AI Engineer
+                </h1>
+            </div>
+
+            <p class="max-w-2xl text-base leading-relaxed text-[#3a332d] sm:text-lg">
+                I build and operate production-grade AI systems for companies with real-world stakes.
+                <br />
+                <span class="relative inline-block align-baseline" aria-live="polite">
+                    <span class="invisible font-semibold">Reliability</span>
+                    {#key rotatingWord}
+                        <span
+                            class="absolute inset-0 flex items-center justify-center font-semibold text-[#d97c35]"
+                            in:fade={{ duration: 200 }}
+                            out:fade={{ duration: 200 }}
+                        >
+                            {rotatingWord}
+                        </span>
+                    {/key}
+                </span>
+                {" "}over hype.
+            </p>
+
+            <FavoriteTools />
+
+        </header>
+
+        <NowWorkBlock />
+
+        <section id="projects" class="mt-20">
+            <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <div>
+                    <p class="text-xs uppercase tracking-[0.3em] text-[#a36b3f]">Projects</p>
                 </div>
-                
-                <div class="text-center md:text-left">
-                    <h1 class="text-xl md:text-2xl font-bold text-foreground mb-4">
-                        Thomas Chaigneau
-                    </h1>
-                    <p class="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-                        <span class="text-foreground font-semibold">ML Engineer</span> embracing <span class="text-[#ffaa40] font-semibold">Founder Mode</span>
+            </div>
+
+            <div class="mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+                <div class="rounded-3xl border border-[#e6c7a8] bg-[#fff7ec] p-8 shadow-xl">
+                    <h3 class="font-display text-2xl">{primaryProduct.name}</h3>
+                    <p class="mt-3 text-sm leading-relaxed text-[#4a423a]">
+                        {primaryProduct.description}
                     </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        {#each primaryProduct.tags as tag}
+                            <span class="rounded-full border border-[#e1c6ad] px-3 py-1 text-xs text-[#8a5a33]">
+                                {tag}
+                            </span>
+                        {/each}
+                    </div>
+                    <div class="mt-6">
+                        <Button
+                            size="lg"
+                            class="bg-[#d97c35] text-white hover:bg-[#c56f2f]"
+                            href={primaryProduct.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Try it
+                            <ArrowUpRight class="h-4 w-4" />
+                        </Button>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="text-center mb-8 mt-16">
-                <p class="text-foreground leading-relaxed">
-                    <span class="text-4xl md:text-6xl font-semibold">I build one SaaS MVP <span class="underline decoration-[#ffaa40]">every month</span></span><br/>
-                    <span class="text-muted-foreground text-2xl md:text-4xl">until my savings cry (or I hit market fit 😂).</span>
-                </p>
-            </div>
-            
-            <div class="flex flex-row gap-2 justify-center items-center md:mt-8">
-                <Button 
-                    class="bg-gradient-to-r from-[#ffaa40] via-[#ff6b40] to-[#9c40ff] text-white hover:opacity-90 hover:scale-105 hover:shadow-lg transform-gpu transition-[transform,box-shadow,opacity] duration-300 motion-reduce:transform-none motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background px-8 py-3 text-lg font-semibold group relative overflow-hidden"
-                    href="https://x.com/chainyo_ai"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Follow the Quest on X"
-                >
-                    <ChevronRight aria-hidden="true" focusable="false" class="absolute left-3 top-1/2 -translate-y-1/2 transition-[left] duration-300 group-hover:left-[calc(100%-theme(spacing.8))] motion-reduce:left-3 motion-reduce:transition-none" />
-                    <span class="transition-transform duration-300 group-hover:-translate-x-4 motion-reduce:transform-none">Follow the Quest</span>
-                </Button>
-                <Button
-                    variant="secondary" 
-                    size="icon" 
-                    href="https://github.com/chainyo"
-                    class="hover:scale-105 hover:shadow-md transition-all duration-200"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open GitHub profile"
-                >
-                    <Github class="h-4 w-4" />
-                </Button>
-            </div>
-            
-            <div class="text-center mt-4">
-                <svg class="w-5 h-5 mx-auto text-muted-foreground mb-1 animate-bounce" style="animation-duration: 2s;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                </svg>
-                <p class="text-sm text-muted-foreground italic">
-                    includes code, screenshots and memes
-                </p>
+
+                <div class="grid gap-4">
+                    {#each sideProducts as product}
+                        <div class="rounded-3xl border border-[#e3d5c8] bg-white/80 p-6 shadow-lg">
+                            <h3 class="font-display text-lg">{product.name}</h3>
+                            <p class="mt-2 text-sm text-[#4a423a]">{product.description}</p>
+                            <a
+                                class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#b36a34] hover:text-[#8f5528]"
+                                href={product.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Visit
+                                <ArrowUpRight class="h-4 w-4" />
+                            </a>
+                        </div>
+                    {/each}
+                </div>
             </div>
         </section>
 
-        <!-- Projects Grid -->
-        <section class="mt-32">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {#each projects as project (project.id)}
-                    <div 
-                        class={`hover:shadow-lg md:hover:-translate-y-2 hover:scale-[1.02] transform-gpu transition-[transform,box-shadow] duration-200 motion-reduce:transform-none motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffaa40]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer border-2 relative pt-4 flex flex-col h-full rounded-lg bg-card text-card-foreground shadow-sm ${project.status === 'building' ? 'border-[#ffaa40]/50' : project.status === 'live' ? 'border-lime-300' : 'border-muted-foreground/50 hover:border-[#ffaa40]/50'}`}
-                        role="button"
-                        tabindex="0"
-                        onclick={() => handleProjectClick(project)}
-                        onkeydown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                                e.preventDefault();
-                                handleProjectClick(project);
-                            }
-                        }}
+        <footer class="mt-16 text-center text-sm text-[#7a6a5e]">
+            <div class="flex flex-col items-center gap-3">
+                <div class="flex flex-wrap justify-center gap-3">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        class="h-11 w-11 text-[#7a6a5e] hover:bg-white/70"
+                        href={links.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Connect on LinkedIn"
                     >
-                        <!-- Status Badge -->
-                        {#if project.status === 'building'}
-                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                                <span class="relative text-xs text-[#ffaa40] dark:text-[#ffaa40] px-3 py-1 rounded font-medium flex items-center shadow-lg overflow-hidden">
-                                    <div class="absolute inset-0 bg-background"></div>
-                                    <div class="absolute inset-0 bg-[#ffaa40]/10 dark:bg-[#ffaa40]/20"></div>
-                                    <div class="relative flex items-center">
-                                        <Loader class="animate-spin w-3 h-3 mr-1" />
-                                        Building
-                                    </div>
-                                </span>
-                            </div>
-                        {:else if project.status === 'live'}
-                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                                <span class="relative text-xs text-lime-600 dark:text-lime-800 px-3 py-1 rounded font-medium flex items-center shadow-lg overflow-hidden">
-                                    <div class="absolute inset-0 bg-background"></div>
-                                    <div class="absolute inset-0 bg-lime-500/10 dark:bg-lime-300"></div>
-                                    <div class="relative flex items-center">
-                                        <div class="w-2 h-2 bg-lime-600 dark:bg-lime-800 rounded-full mr-1 animate-pulse"></div>
-                                        Live
-                                    </div>
-                                </span>
-                            </div>
-                        {/if}
-                        <CardHeader class="pb-1 pt-6">
-                            <div class="flex items-center justify-between">
-                                <CardTitle class="text-lg font-semibold">
-                                    {#if project.status === "skeleton"}
-                                        <Skeleton class="h-6 w-24" />
-                                    {:else}
-                                        {project.title}
-                                    {/if}
-                                </CardTitle>
-                                <span class="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded">
-                                    {project.month}
-                                </span>
-                            </div>
-                        </CardHeader>
-                        
-                        <CardContent class="pb-4 pt-2 flex-grow">
-                            {#if project.status === "skeleton"}
-                                <div class="space-y-2">
-                                    <Skeleton class="h-4 w-full" />
-                                    <Skeleton class="h-4 w-3/4" />
-                                    <Skeleton class="h-4 w-1/2" />
-                                </div>
-                            {:else}
-                                <CardDescription class="text-sm">
-                                    {project.description}
-                                </CardDescription>
-                            {/if}
-                        </CardContent>
-                        
-                        <CardFooter class="pt-0">
-                            <div class="w-full text-center">
-                                {#if project.status === "skeleton"}
-                                    <Skeleton class="h-6 w-16 mx-auto" />
-                                {:else}
-                                    <div class="text-lg font-bold text-[#ffaa40]">
-                                        ${project.mrr} MRR
-                                    </div>
-                                {/if}
-                            </div>
-                        </CardFooter>
-                    </div>
-                {/each}
+                        <Linkedin class="h-5 w-5" />
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        class="h-11 w-11 text-[#7a6a5e] hover:bg-white/70"
+                        href={links.x}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Follow on X"
+                    >
+                        <svg
+                            class="h-5 w-5"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                        >
+                            <path
+                                d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"
+                                fill="currentColor"
+                            />
+                        </svg>
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        class="h-11 w-11 text-[#7a6a5e] hover:bg-white/70"
+                        on:click={revealEmail}
+                        aria-label="Reveal email address"
+                    >
+                        <Mail class="h-5 w-5" />
+                    </Button>
+                </div>
+                {#if showEmail}
+                    <p class="text-xs text-[#7a6a5e]">thomas@chainyo.dev</p>
+                {/if}
+                <p>© {new Date().getFullYear()} CHNY Software, All rights reserved.</p>
             </div>
-        </section>
-        
-        <!-- Footer -->
-        <footer class="mt-16 text-center text-muted-foreground">
-            <p class="text-sm mb-4">
-                Building in public • One SaaS at a time • Follow along on 
-                <a href="https://x.com/chainyo_ai" class="text-[#ffaa40] hover:underline" target="_blank" rel="noopener noreferrer">X</a>
-            </p>
-            <p class="text-xs">
-                © {new Date().getFullYear()} chainyo.dev • All rights reserved
-            </p>
         </footer>
-    </div>
+    </main>
 </div>
+
+<style>
+    :global(body) {
+        font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    :global(.font-display) {
+        font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+        letter-spacing: -0.02em;
+    }
+</style>

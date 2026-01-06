@@ -13,19 +13,19 @@ The homepage SHALL describe the current primary client engagement as the main fo
 - **WHEN** the visitor reaches the current focus section
 - **THEN** the copy highlights a primary B2B client focus and selective commitments
 
-### Requirement: Products as proof of execution
-The homepage SHALL showcase independent products as secondary to the main B2B work.
+### Requirement: Stack tools highlight
+The homepage SHALL display a stack tools block with linked logos for key tools used.
 
-#### Scenario: Visitor scans the products section
-- **WHEN** the visitor reaches the products section
-- **THEN** the page lists at least one product with a short description and link
+#### Scenario: Visitor scans the hero area
+- **WHEN** the visitor views the hero section
+- **THEN** a stack tools block lists at least two tools with links
 
-### Requirement: Writing placeholder
-The homepage SHALL include a writing or blog section placeholder that signals future content.
+### Requirement: Projects as proof of execution
+The homepage SHALL showcase independent projects as secondary to the main B2B work.
 
-#### Scenario: Visitor sees the writing section
-- **WHEN** the visitor scrolls to the writing area
-- **THEN** the page communicates that writing or blog content will be added later
+#### Scenario: Visitor scans the projects section
+- **WHEN** the visitor reaches the projects section
+- **THEN** the page lists at least one project with a short description and link
 
 ### Requirement: Reach-out channel
 The homepage SHALL provide a clear call to action for reaching out.
