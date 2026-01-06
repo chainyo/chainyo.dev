@@ -1,8 +1,9 @@
 <script lang="ts">
-    import { Linkedin, Mail } from "@lucide/svelte";
+    import { Check, Copy, Linkedin, Mail } from "@lucide/svelte";
     import { onMount } from "svelte";
     import { fade } from "svelte/transition";
     import { Button } from "$lib/components/ui/button/index.js";
+    import * as Dialog from "$lib/components/ui/dialog/index.js";
     import FlickeringGrid from "$lib/components/ui/FlickeringGrid.svelte";
     import FavoriteTools from "../mintegration/one.svelte";
     import NowWorkBlock from "../mcontent/one.svelte";
@@ -13,10 +14,28 @@
         x: "https://x.com/chainyo_ai"
     };
 
-    let showEmail = false;
+    const emailAddress = "thomas@chainyo.dev";
+    let emailOpen = false;
+    let emailCopied = false;
+    let emailCopyTimeout: number | undefined;
 
-    const revealEmail = () => {
-        showEmail = true;
+    const copyEmail = async () => {
+        if (!navigator?.clipboard?.writeText) {
+            return;
+        }
+
+        try {
+            await navigator.clipboard.writeText(emailAddress);
+            emailCopied = true;
+            if (emailCopyTimeout) {
+                window.clearTimeout(emailCopyTimeout);
+            }
+            emailCopyTimeout = window.setTimeout(() => {
+                emailCopied = false;
+            }, 1800);
+        } catch {
+            emailCopied = false;
+        }
     };
 
     const rotatingWords = ["Reliability", "Clarity", "Simplicity"];
@@ -217,15 +236,54 @@
                         variant="ghost"
                         size="icon"
                         class="h-11 w-11 text-[#7a6a5e] hover:bg-white/70"
-                        on:click={revealEmail}
+                        onclick={() => (emailOpen = true)}
                         aria-label="Reveal email address"
                     >
                         <Mail class="h-5 w-5" />
                     </Button>
                 </div>
-                {#if showEmail}
-                    <p class="text-xs text-[#7a6a5e]">thomas@chainyo.dev</p>
-                {/if}
+                <Dialog.Root bind:open={emailOpen}>
+                    <Dialog.Content
+                        class="border-[#e0d1c1] bg-[#fdf9f3] text-[#1d1a16] sm:max-w-md"
+                    >
+                        <Dialog.Header class="text-left">
+                            <Dialog.Title class="font-display text-xl">
+                                Email
+                            </Dialog.Title>
+                            <Dialog.Description class="text-sm text-[#6b5d52]">
+                                Reach me at the address below.
+                            </Dialog.Description>
+                        </Dialog.Header>
+                        <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
+                            <span class="font-medium text-[#3a332d]">{emailAddress}</span>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                class="h-8 w-8 text-[#6b5d52] hover:bg-[#f3e7d8]"
+                                onclick={copyEmail}
+                                aria-label="Copy email address"
+                            >
+                                {#if emailCopied}
+                                    <Check class="h-4 w-4 text-green-600" />
+                                {:else}
+                                    <Copy class="h-4 w-4" />
+                                {/if}
+                                <span class="sr-only">
+                                    {emailCopied ? "Copied" : "Copy"}
+                                </span>
+                            </Button>
+                        </div>
+                        <Dialog.Footer class="mt-5">
+                            <Button
+                                variant="outline"
+                                class="border-[#e0d1c1] text-[#3a332d] hover:bg-[#f3e7d8]"
+                                href={`mailto:${emailAddress}`}
+                            >
+                                Open mail app
+                            </Button>
+                        </Dialog.Footer>
+                    </Dialog.Content>
+                </Dialog.Root>
                 <p>© {new Date().getFullYear()} CHNY Software, All rights reserved.</p>
             </div>
         </footer>
