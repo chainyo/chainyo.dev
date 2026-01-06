@@ -1,11 +1,12 @@
 <script lang="ts">
-    import { ArrowUpRight, Linkedin, Mail } from "@lucide/svelte";
+    import { Linkedin, Mail } from "@lucide/svelte";
     import { onMount } from "svelte";
     import { fade } from "svelte/transition";
     import { Button } from "$lib/components/ui/button/index.js";
     import FlickeringGrid from "$lib/components/ui/FlickeringGrid.svelte";
     import FavoriteTools from "../mintegration/one.svelte";
     import NowWorkBlock from "../mcontent/one.svelte";
+    import ProjectsFeature from "../mfeature/two.svelte";
 
     const links = {
         linkedin: "https://www.linkedin.com/in/chainyo/",
@@ -17,27 +18,6 @@
     const revealEmail = () => {
         showEmail = true;
     };
-
-    const primaryProduct = {
-        name: "LocalClip.app",
-        description:
-            "Drop a recording. Local Clip finds the highlights, writes captions, and exports platform-ready clips without uploading a byte.",
-        url: "https://localclip.app",
-        tags: ["Local-first", "Creator tooling", "AI-assisted"]
-    };
-
-    const sideProducts = [
-        {
-            name: "Pomodobros",
-            description: "Turn solo procrastination into shared productivity.",
-            url: "https://pomodobros.com"
-        },
-        {
-            name: "MowPrompt",
-            description: "Clean and compress prompts before they hit your model.",
-            url: "https://mowprompt.com"
-        }
-    ];
 
     const rotatingWords = ["Reliability", "Clarity", "Simplicity"];
     let rotatingIndex = 0;
@@ -149,8 +129,6 @@
 
     <FlickeringGrid
         class="absolute inset-0 h-full w-full opacity-25"
-        width={2000}
-        height={1400}
         squareSize={4}
         gridGap={6}
         color="#bda995"
@@ -175,7 +153,7 @@
             </div>
 
             <p class="max-w-2xl text-base leading-relaxed text-[#3a332d] sm:text-lg">
-                I build and operate production-grade AI systems for companies with real-world stakes.
+                I build production-grade AI systems for companies with real-world stakes.
                 <br />
                 <span class="relative inline-block align-baseline" aria-live="polite">
                     <span class="invisible font-semibold">Reliability</span>
@@ -198,59 +176,7 @@
 
         <NowWorkBlock />
 
-        <section id="projects" class="mt-20">
-            <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                <div>
-                    <p class="text-xs uppercase tracking-[0.3em] text-[#a36b3f]">Projects</p>
-                </div>
-            </div>
-
-            <div class="mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-                <div class="rounded-3xl border border-[#e6c7a8] bg-[#fff7ec] p-8 shadow-xl">
-                    <h3 class="font-display text-2xl">{primaryProduct.name}</h3>
-                    <p class="mt-3 text-sm leading-relaxed text-[#4a423a]">
-                        {primaryProduct.description}
-                    </p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        {#each primaryProduct.tags as tag}
-                            <span class="rounded-full border border-[#e1c6ad] px-3 py-1 text-xs text-[#8a5a33]">
-                                {tag}
-                            </span>
-                        {/each}
-                    </div>
-                    <div class="mt-6">
-                        <Button
-                            size="lg"
-                            class="bg-[#d97c35] text-white hover:bg-[#c56f2f]"
-                            href={primaryProduct.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Try it
-                            <ArrowUpRight class="h-4 w-4" />
-                        </Button>
-                    </div>
-                </div>
-
-                <div class="grid gap-4">
-                    {#each sideProducts as product}
-                        <div class="rounded-3xl border border-[#e3d5c8] bg-white/80 p-6 shadow-lg">
-                            <h3 class="font-display text-lg">{product.name}</h3>
-                            <p class="mt-2 text-sm text-[#4a423a]">{product.description}</p>
-                            <a
-                                class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#b36a34] hover:text-[#8f5528]"
-                                href={product.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Visit
-                                <ArrowUpRight class="h-4 w-4" />
-                            </a>
-                        </div>
-                    {/each}
-                </div>
-            </div>
-        </section>
+        <ProjectsFeature />
 
         <footer class="mt-16 text-center text-sm text-[#7a6a5e]">
             <div class="flex flex-col items-center gap-3">
