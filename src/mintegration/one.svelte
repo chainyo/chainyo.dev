@@ -6,7 +6,9 @@
 <section>
   <div class="mx-auto max-w-5xl px-6 py-8">
     <div class="flex flex-nowrap items-center gap-4 overflow-x-auto">
-      <p class="whitespace-nowrap text-muted-foreground font-medium">Favorite stack:</p>
+      <p class="whitespace-nowrap text-sm text-muted-foreground font-medium sm:text-base">
+        Favorite stack:
+      </p>
       <Tooltip.Provider delayDuration={0}>
         <div class="flex flex-none flex-nowrap items-center gap-3 divide-x *:pr-3">
           <Tooltip.Root>
@@ -23,7 +25,7 @@
                   <img
                     src="/superwhisper-logo.png"
                     alt="superwhisper"
-                    class="m-auto h-7 w-7"
+                    class="m-auto h-6 w-6 sm:h-7 sm:w-7"
                     loading="lazy"
                   />
                 </a>
@@ -42,7 +44,7 @@
                   aria-label="OpenAI Codex"
                   class="flex items-center justify-center"
                 >
-                  <OpenAI class="m-auto size-5" />
+                  <OpenAI class="m-auto size-4 sm:size-5" />
                 </a>
               {/snippet}
             </Tooltip.Trigger>
@@ -62,7 +64,7 @@
                   <img
                     src="https://openspec.dev/_astro/openspec_icon_light.BXKVBxjB.svg"
                     alt="OpenSpec"
-                    class="m-auto h-5 w-auto"
+                    class="m-auto h-4 w-auto sm:h-5"
                     style="filter: brightness(0); opacity: 0.85;"
                     loading="lazy"
                   />
@@ -85,7 +87,7 @@
                   <img
                     src="/CUBE_2D_LIGHT.svg"
                     alt="Cursor"
-                    class="m-auto h-5 w-5"
+                    class="m-auto h-4 w-4 sm:h-5 sm:w-5"
                     loading="lazy"
                   />
                 </a>
@@ -105,9 +107,9 @@
                   class="flex items-center justify-center"
                 >
                   <img
-                    src="https://www.coderabbit.ai/favicon.ico"
+                    src="/coderabbit-icon.svg"
                     alt="CodeRabbit"
-                    class="m-auto h-5 w-5"
+                    class="m-auto h-4 w-4 sm:h-5 sm:w-5"
                     loading="lazy"
                   />
                 </a>

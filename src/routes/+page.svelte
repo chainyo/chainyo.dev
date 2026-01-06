@@ -167,7 +167,7 @@
                     Thomas Chaigneau
                 </p>
                 <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl">
-                    Founder-minded AI Engineer
+                    Founder-minded<span class="block sm:inline sm:ml-2">AI Engineer</span>
                 </h1>
             </div>
 

@@ -226,15 +226,18 @@
         >
           <h3 class="text-base font-semibold text-[#1d1a16]">Current mission</h3>
           <p class="text-xl text-[#4a423a]">
-            Founding AI Engineer at
-            <a
-              href="https://www.elys-health.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="font-semibold text-inherit underline decoration-[#d97c35] underline-offset-2 hover:text-[#d97c35] hover:decoration-[#d97c35]"
-            >
-              Elys Health
-            </a>
+            Founding AI Engineer
+            <span class="block sm:inline sm:ml-2">
+              at
+              <a
+                href="https://www.elys-health.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-semibold text-inherit underline decoration-[#d97c35] underline-offset-2 hover:text-[#d97c35] hover:decoration-[#d97c35]"
+              >
+                Elys Health
+              </a>
+            </span>
           </p>
           <p class="mt-4 text-sm text-[#4a423a]">
             <span
