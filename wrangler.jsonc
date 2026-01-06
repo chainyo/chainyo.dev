@@ -4,7 +4,7 @@
     "compatibility_flags": ["nodejs_compat"],
 	"main": "./.cloudflare/worker.js",
 	"build": {
-		"command": "npm run build"
+		"command": "bun run build"
 	},
     "assets": {
       "directory": "./dist/client/",
