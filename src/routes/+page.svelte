@@ -58,6 +58,25 @@
         };
     });
 
+    onMount(() => {
+        const root = document.documentElement;
+        const hadDarkClass = root.classList.contains("dark");
+        const previousColorScheme = root.style.colorScheme;
+
+        root.classList.remove("dark");
+        root.style.colorScheme = "light";
+
+        return () => {
+            if (hadDarkClass) {
+                root.classList.add("dark");
+            } else {
+                root.classList.remove("dark");
+            }
+
+            root.style.colorScheme = previousColorScheme;
+        };
+    });
+
 </script>
 
 <svelte:head>
