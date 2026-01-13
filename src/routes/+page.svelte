@@ -58,25 +58,6 @@
         };
     });
 
-    onMount(() => {
-        const root = document.documentElement;
-        const hadDarkClass = root.classList.contains("dark");
-        const previousColorScheme = root.style.colorScheme;
-
-        root.classList.remove("dark");
-        root.style.colorScheme = "light";
-
-        return () => {
-            if (hadDarkClass) {
-                root.classList.add("dark");
-            } else {
-                root.classList.remove("dark");
-            }
-
-            root.style.colorScheme = previousColorScheme;
-        };
-    });
-
 </script>
 
 <svelte:head>
@@ -152,7 +133,7 @@
     </script>
 </svelte:head>
 
-<div class="relative min-h-screen overflow-hidden bg-[#f8f4ee] text-[#1d1a16]">
+<div class="landing-light relative min-h-screen overflow-hidden bg-[#f8f4ee] text-[#1d1a16]">
     <div class="pointer-events-none absolute inset-0">
         <div
             class="absolute inset-0 bg-[radial-gradient(circle_at_top,_#f3dcc2_0%,_#f8f4ee_45%,_#eef2f5_100%)]"
@@ -317,5 +298,36 @@
     :global(.font-display) {
         font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
         letter-spacing: -0.02em;
+    }
+
+    :global(.landing-light) {
+        color-scheme: light;
+        --background: hsl(0 0% 100%);
+        --foreground: hsl(240 10% 3.9%);
+        --muted: hsl(240 4.8% 95.9%);
+        --muted-foreground: hsl(240 3.8% 46.1%);
+        --popover: hsl(0 0% 100%);
+        --popover-foreground: hsl(240 10% 3.9%);
+        --card: hsl(0 0% 100%);
+        --card-foreground: hsl(240 10% 3.9%);
+        --border: hsl(240 5.9% 90%);
+        --input: hsl(240 5.9% 90%);
+        --primary: hsl(240 5.9% 10%);
+        --primary-foreground: hsl(0 0% 98%);
+        --secondary: hsl(240 4.8% 95.9%);
+        --secondary-foreground: hsl(240 5.9% 10%);
+        --accent: hsl(240 4.8% 95.9%);
+        --accent-foreground: hsl(240 5.9% 10%);
+        --destructive: hsl(0 72.2% 50.6%);
+        --destructive-foreground: hsl(0 0% 98%);
+        --ring: hsl(240 10% 3.9%);
+        --sidebar: hsl(0 0% 98%);
+        --sidebar-foreground: hsl(240 5.3% 26.1%);
+        --sidebar-primary: hsl(240 5.9% 10%);
+        --sidebar-primary-foreground: hsl(0 0% 98%);
+        --sidebar-accent: hsl(240 4.8% 95.9%);
+        --sidebar-accent-foreground: hsl(240 5.9% 10%);
+        --sidebar-border: hsl(220 13% 91%);
+        --sidebar-ring: hsl(217.2 91.2% 59.8%);
     }
 </style>
