@@ -3,6 +3,13 @@ import type { PageLoad } from "./$types";
 import { blogFrontmatterSchema, slugifyTitle } from "$lib/blog/index.js";
 
 const blogModules = import.meta.glob("/src/content/blog/*.md", { eager: true });
+const blogRawModules = import.meta.glob("/src/content/blog/*.md", {
+	eager: true,
+	query: "?raw",
+	import: "default",
+});
+const repoUrl = "https://github.com/chainyo/chainyo.dev";
+const repoBranch = "main";
 
 type BlogModule = {
 	metadata?: Record<string, unknown>;
@@ -17,10 +24,20 @@ export const load: PageLoad = async ({ params }) => {
 		const slug = slugifyTitle(parsed.title);
 
 		if (slug === params.slug) {
+			const rawSource = blogRawModules[path];
+			const markdown =
+				typeof rawSource === "string"
+					? rawSource.replace(/^---[\\s\\S]*?---\\s*/, "")
+					: "";
+			const repoPath = path.startsWith("/") ? path.slice(1) : path;
+			const repoFileUrl = `${repoUrl}/blob/${repoBranch}/${repoPath}`;
+
 			return {
 				post: {
 					slug,
 					component: module.default,
+					markdown,
+					repoFileUrl,
 					...parsed,
 					path,
 				},

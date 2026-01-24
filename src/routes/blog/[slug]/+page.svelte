@@ -1,6 +1,9 @@
 <script lang="ts">
 	import FlickeringGrid from "$lib/components/ui/FlickeringGrid.svelte";
+	import { Github } from "@lucide/svelte";
 	import SiteFooter from "$lib/components/site-footer.svelte";
+	import { CopyButton } from "$lib/components/index.js";
+	import { createCopyCodeButton } from "$lib/utils.js";
 
 	export let data: {
 		post: {
@@ -11,10 +14,18 @@
 			cover?: string;
 			tags?: string[];
 			component?: unknown;
+			markdown?: string;
+			repoFileUrl?: string;
 		};
 	};
 
 	const Post = data.post.component as typeof import("svelte").SvelteComponent | undefined;
+
+	const { copied, copyCode, codeString } = createCopyCodeButton();
+
+	$: if (data.post?.markdown) {
+		codeString.set(data.post.markdown);
+	}
 </script>
 
 <svelte:head>
@@ -56,12 +67,34 @@
 
 		<section class="blog-post">
 			<div class="blog-content">
-				<header class="blog-header flex flex-col gap-4">
-					<h1 class="font-display text-3xl sm:text-4xl lg:text-5xl">{data.post.title}</h1>
-					<p class="text-sm uppercase tracking-[0.2em] text-[#7a6a5e]">{data.post.date}</p>
-					<p class="text-xl font-semibold leading-relaxed text-[#3a332d]">
-						{data.post.summary}
-					</p>
+				<div class="blog-actions">
+					{#if data.post.repoFileUrl}
+						<a
+							href={data.post.repoFileUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="blog-action-button"
+							aria-label="Open blog post on GitHub"
+						>
+							<Github class="h-4 w-4" />
+						</a>
+					{/if}
+					<CopyButton
+						copied={$copied}
+						copyCode={copyCode}
+						value={$codeString}
+						class="static blog-action-button h-11 w-11 text-[#7a6a5e]"
+						aria-label="Copy markdown"
+					/>
+				</div>
+				<header class="blog-header">
+					<div class="blog-header-meta">
+						<p class="text-sm uppercase tracking-[0.2em] text-[#7a6a5e]">{data.post.date}</p>
+						<h1 class="font-display text-3xl sm:text-4xl lg:text-5xl">{data.post.title}</h1>
+						<p class="text-xl font-semibold leading-relaxed text-[#3a332d]">
+							{data.post.summary}
+						</p>
+					</div>
 				</header>
 				{#if Post}
 					<svelte:component this={Post} />
@@ -123,12 +156,54 @@
 		padding: 28px 32px;
 		border-radius: 10px;
 		font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+		position: relative;
+	}
+
+	:global(.blog-actions) {
+		position: absolute;
+		top: 18px;
+		right: 18px;
+		display: flex;
+		gap: 6px;
+	}
+
+	:global(.blog-action-button) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		height: 44px;
+		width: 44px;
+		border-radius: 8px;
+		border: none;
+		background: transparent;
+		color: #7a6a5e;
+		transition: background 150ms ease, color 150ms ease;
+	}
+
+	:global(.blog-action-button:hover) {
+		background: rgba(255, 255, 255, 0.7);
+		color: #3a332d;
+	}
+
+	:global(.blog-action-button svg) {
+		width: 16px;
+		height: 16px;
 	}
 
 	:global(.blog-header) {
 		margin-bottom: 2.5rem;
 		padding-bottom: 1.5rem;
 		border-bottom: 1px solid rgba(217, 201, 182, 0.6);
+	}
+
+	:global(.blog-header-meta) {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	:global(.blog-copy) {
+		align-self: flex-start;
 	}
 
 	:global(.blog-post .blog-content > h1:first-of-type) {
