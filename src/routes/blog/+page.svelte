@@ -69,7 +69,7 @@
 			<section class="grid gap-6">
 				{#each data.posts as post}
 					<article class="group rounded-3xl border border-[#e0d1c1] bg-white/80 p-6 shadow-[0_20px_40px_-32px_rgba(29,26,22,0.45)] backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(29,26,22,0.55)]">
-						<div class="flex flex-col gap-4">
+						<div class="flex flex-col gap-2">
 							<div class="flex flex-col gap-2">
 								<p class="text-xs uppercase tracking-[0.25em] text-[#7a6a5e]">
 									{post.date}
@@ -81,7 +81,7 @@
 									{post.title}
 								</a>
 							</div>
-							<p class="text-sm leading-relaxed text-[#6b5d52]">{post.summary}</p>
+							<p class="mb-2 text-sm leading-relaxed text-[#6b5d52]">{post.summary}</p>
 							<a
 								href={`/blog/${post.slug}`}
 								class="text-sm font-semibold text-[#d97c35]"

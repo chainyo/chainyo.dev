@@ -46,25 +46,27 @@
 		flickerChance={0.08}
 	/>
 
-	<main class="relative z-10 mx-auto w-full max-w-5xl px-6 pb-24 pt-16 lg:pt-24">
-		<header class="mb-10 flex flex-col gap-4">
-			<a
-				href="/blog"
-				class="w-fit text-xs uppercase tracking-[0.3em] text-[#3a332d] transition hover:text-[#d97c35]"
-			>
-				← Back to blog
-			</a>
-			<h1 class="font-display text-3xl sm:text-4xl lg:text-5xl">{data.post.title}</h1>
-			<p class="text-sm uppercase tracking-[0.2em] text-[#7a6a5e]">{data.post.date}</p>
-			<p class="max-w-2xl text-base leading-relaxed text-[#3a332d] sm:text-lg">
-				{data.post.summary}
-			</p>
-		</header>
+	<main class="relative z-10 mx-auto w-full max-w-6xl px-6 pb-24 pt-16 lg:pt-24">
+		<a
+			href="/blog"
+			class="mb-6 inline-flex w-fit text-xs uppercase tracking-[0.3em] text-[#3a332d] transition hover:text-[#d97c35]"
+		>
+			← Back to blog
+		</a>
 
-		<section class="p-0 sm:p-0">
-			{#if Post}
-				<svelte:component this={Post} />
-			{/if}
+		<section class="blog-post">
+			<div class="blog-content">
+				<header class="blog-header flex flex-col gap-4">
+					<h1 class="font-display text-3xl sm:text-4xl lg:text-5xl">{data.post.title}</h1>
+					<p class="text-sm uppercase tracking-[0.2em] text-[#7a6a5e]">{data.post.date}</p>
+					<p class="text-xl font-semibold leading-relaxed text-[#3a332d]">
+						{data.post.summary}
+					</p>
+				</header>
+				{#if Post}
+					<svelte:component this={Post} />
+				{/if}
+			</div>
 		</section>
 
 		<SiteFooter />
@@ -110,5 +112,51 @@
 		--sidebar-accent-foreground: hsl(240 5.9% 10%);
 		--sidebar-border: hsl(220 13% 91%);
 		--sidebar-ring: hsl(217.2 91.2% 59.8%);
+	}
+
+	:global(.blog-post) {
+		max-width: 100%;
+	}
+
+	:global(.blog-content) {
+		background: rgba(253, 248, 241, 0.5);
+		padding: 28px 32px;
+		border-radius: 10px;
+		font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+	}
+
+	:global(.blog-header) {
+		margin-bottom: 2.5rem;
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid rgba(217, 201, 182, 0.6);
+	}
+
+	:global(.blog-post .blog-content > h1:first-of-type) {
+		display: none;
+	}
+
+	:global(.blog-post p) {
+		font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+		font-size: 1rem;
+		line-height: 1.6;
+		margin-top: 0.9rem;
+	}
+
+	:global(.blog-post p:first-child) {
+		margin-top: 0;
+	}
+
+	:global(.blog-post h2) {
+		margin-top: 2rem;
+		padding-bottom: 0.4rem;
+	}
+
+	:global(.blog-post h3) {
+		margin-top: 1.6rem;
+	}
+
+	:global(.blog-post ul),
+	:global(.blog-post ol) {
+		margin-top: 0.8rem;
 	}
 </style>
