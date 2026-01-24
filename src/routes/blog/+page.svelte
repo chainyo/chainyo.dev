@@ -1,5 +1,6 @@
 <script lang="ts">
 	import FlickeringGrid from "$lib/components/ui/FlickeringGrid.svelte";
+	import SiteFooter from "$lib/components/site-footer.svelte";
 
 	export let data: {
 		posts: Array<{
@@ -87,6 +88,8 @@
 				{/each}
 			</section>
 		{/if}
+
+		<SiteFooter />
 	</main>
 </div>
 

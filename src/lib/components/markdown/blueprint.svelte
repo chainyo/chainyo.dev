@@ -1,5 +1,5 @@
 <script context="module">
-	import "../../../../styles/markdown.pcss";
+	import "../../../styles/markdown.pcss";
 	import {
 		a,
 		blockquote,
