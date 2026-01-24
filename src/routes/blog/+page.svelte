@@ -48,10 +48,15 @@
 
 	<main class="relative z-10 mx-auto w-full max-w-6xl px-6 pb-24 pt-16 lg:pt-24">
 		<header class="mb-12 flex flex-col gap-4">
-			<p class="text-xs uppercase tracking-[0.3em] text-[#3a332d]">Blog</p>
+			<a
+				href="/"
+				class="w-fit text-xs uppercase tracking-[0.3em] text-[#3a332d] transition hover:text-[#d97c35]"
+			>
+				← Back to home
+			</a>
 			<h1 class="font-display text-3xl sm:text-4xl lg:text-5xl">Latest writing</h1>
 			<p class="max-w-2xl text-base leading-relaxed text-[#3a332d] sm:text-lg">
-				Shipping notes, deep dives, and experiments from building production-grade AI systems.
+				My shipping notes, deep dives, and experiments from building production-grade AI systems.
 			</p>
 		</header>
 
