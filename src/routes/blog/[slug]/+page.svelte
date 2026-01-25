@@ -157,6 +157,9 @@
 		border-radius: 10px;
 		font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
 		position: relative;
+		width: 100%;
+		max-width: 72ch;
+		margin: 0 auto;
 	}
 
 	:global(.blog-actions) {
@@ -213,12 +216,17 @@
 	:global(.blog-post p) {
 		font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
 		font-size: 1rem;
-		line-height: 1.6;
-		margin-top: 0.9rem;
+		line-height: 1.65;
+		margin: 0.9rem 0 1.1rem;
+		text-wrap: pretty;
 	}
 
 	:global(.blog-post p:first-child) {
 		margin-top: 0;
+	}
+
+	:global(.blog-post p:last-child) {
+		margin-bottom: 0;
 	}
 
 	:global(.blog-post h2) {
@@ -233,5 +241,23 @@
 	:global(.blog-post ul),
 	:global(.blog-post ol) {
 		margin-top: 0.8rem;
+	}
+
+	@media (max-width: 640px) {
+		:global(.blog-content) {
+			padding: 22px 20px;
+			max-width: 100%;
+		}
+
+		:global(.blog-post p) {
+			font-size: 1.05rem;
+			line-height: 1.8;
+			margin: 1.1rem 0 1.3rem;
+		}
+
+		:global(.blog-header) {
+			margin-bottom: 2rem;
+			padding-bottom: 1.25rem;
+		}
 	}
 </style>
