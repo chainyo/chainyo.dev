@@ -89,12 +89,9 @@
     }
   
     let animationFrameId: number | null = null;
+    let resizeObserver: ResizeObserver | null = null;
   
     onMount(() => {
-      console.log("canvas", canvas);
-      if (canvas) {
-        console.log("canvas", canvas);
-      }
       if (!canvas) {
         return;
       }
@@ -103,8 +100,6 @@
         return;
       }
       let { canvasWidth, canvasHeight, cols, rows, squares, dpr } = setupCanvas();
-      console.log(ctx, "ctx");
-  
       let lastTime = 0;
   
       const animate = (time: number) => {
@@ -131,7 +126,6 @@
   
       const observer = new IntersectionObserver(
         ([entry]) => {
-          console.log(entry.isIntersecting);
           isInView.set(entry.isIntersecting);
         },
         { threshold: 0 }
@@ -139,6 +133,13 @@
   
       observer.observe(canvas);
   
+      if (typeof ResizeObserver !== "undefined") {
+        resizeObserver = new ResizeObserver(() => {
+          handleResize();
+        });
+        resizeObserver.observe(canvas);
+      }
+
       window.addEventListener("resize", handleResize);
   
       const unsubscribe = isInView.subscribe((inView) => {
@@ -149,6 +150,8 @@
   
       return () => {
         window.removeEventListener("resize", handleResize);
+        resizeObserver?.disconnect();
+        resizeObserver = null;
         if (animationFrameId !== null) {
           cancelAnimationFrame(animationFrameId);
         }
