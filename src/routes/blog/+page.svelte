@@ -62,7 +62,7 @@
 		{#if data.posts.length === 0}
 			<div class="blog-empty rounded-3xl border border-dashed border-[#d9c9b6] bg-white/70 p-12 text-center">
 				<p class="blog-empty-title text-base font-semibold text-[#1d1a16]">No posts yet.</p>
-				<p class="blog-empty-body mt-2 text-sm text-[#6b5d52]">
+				<p class="blog-empty-body mt-2 text-sm text-[#54463d]">
 					Check back soon for new writing.
 				</p>
 			</div>
@@ -72,7 +72,7 @@
 					<article class="blog-card group rounded-3xl border border-[#e0d1c1] bg-white/80 p-6 shadow-[0_20px_40px_-32px_rgba(29,26,22,0.45)] backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(29,26,22,0.55)]">
 						<div class="flex flex-col gap-2">
 							<div class="flex flex-col gap-2">
-								<p class="blog-card-date text-xs uppercase tracking-[0.25em] text-[#7a6a5e]">
+								<p class="blog-card-date text-xs uppercase tracking-[0.25em] text-[#5f4f44]">
 									{post.date}
 								</p>
 								<a
@@ -82,7 +82,7 @@
 									{post.title}
 								</a>
 							</div>
-							<p class="blog-card-summary mb-2 text-sm leading-relaxed text-[#6b5d52]">
+							<p class="blog-card-summary mb-2 text-sm leading-relaxed text-[#54463d]">
 								{post.summary}
 							</p>
 							<a
@@ -127,7 +127,7 @@
 	}
 
 	:global(.landing-light.blog-dark .blog-card-date) {
-		color: #a9998c;
+		color: #d7c8bb;
 	}
 
 	:global(.landing-light.blog-dark .blog-card-title) {
@@ -135,7 +135,7 @@
 	}
 
 	:global(.landing-light.blog-dark .blog-card-summary) {
-		color: #c7b6a7;
+		color: #e3d4c6;
 	}
 
 	:global(.landing-light.blog-dark .blog-card-link) {
@@ -156,7 +156,7 @@
 	}
 
 	:global(.landing-light.blog-dark .blog-empty-body) {
-		color: #c7b6a7;
+		color: #e3d4c6;
 	}
 
 	@media (max-width: 640px) {

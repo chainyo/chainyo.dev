@@ -33,13 +33,13 @@
 	};
 </script>
 
-<footer class="mt-16 text-center text-sm text-[#7a6a5e]">
+<footer class="site-footer mt-16 text-center text-sm text-[#5f4f44]">
 	<div class="flex flex-col items-center gap-3">
 		<div class="flex flex-wrap justify-center gap-3">
 			<Button
 				variant="ghost"
 				size="icon"
-				class="h-11 w-11 text-[#7a6a5e] hover:bg-white/70"
+				class="site-footer-icon h-11 w-11 text-[#5f4f44] hover:bg-white/70"
 				href={links.linkedin}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -50,7 +50,7 @@
 			<Button
 				variant="ghost"
 				size="icon"
-				class="h-11 w-11 text-[#7a6a5e] hover:bg-white/70"
+				class="site-footer-icon h-11 w-11 text-[#5f4f44] hover:bg-white/70"
 				href={links.x}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -66,7 +66,7 @@
 			<Button
 				variant="ghost"
 				size="icon"
-				class="h-11 w-11 text-[#7a6a5e] hover:bg-white/70"
+				class="site-footer-icon h-11 w-11 text-[#5f4f44] hover:bg-white/70"
 				onclick={() => (emailOpen = true)}
 				aria-label="Reveal email address"
 			>
@@ -77,7 +77,7 @@
 			<Dialog.Content class="border-[#e0d1c1] bg-[#fdf9f3] text-[#1d1a16] sm:max-w-md">
 				<Dialog.Header class="text-left">
 					<Dialog.Title class="font-display text-xl">Email</Dialog.Title>
-					<Dialog.Description class="text-sm text-[#6b5d52]">
+					<Dialog.Description class="site-footer-muted text-sm text-[#54463d]">
 						Reach me at the address below.
 					</Dialog.Description>
 				</Dialog.Header>
@@ -86,7 +86,7 @@
 					<Button
 						variant="ghost"
 						size="icon"
-						class="h-8 w-8 text-[#6b5d52] hover:bg-[#f3e7d8]"
+						class="site-footer-muted h-8 w-8 text-[#54463d] hover:bg-[#f3e7d8]"
 						onclick={copyEmail}
 						aria-label="Copy email address"
 					>
@@ -112,3 +112,22 @@
 		<p>© {new Date().getFullYear()} CHNY Software, All rights reserved.</p>
 	</div>
 </footer>
+
+<style>
+	:global(.landing-light.blog-dark .site-footer) {
+		color: #e3d4c6;
+	}
+
+	:global(.landing-light.blog-dark .site-footer .site-footer-icon) {
+		color: #e3d4c6;
+	}
+
+	:global(.landing-light.blog-dark .site-footer .site-footer-icon:hover) {
+		background: rgba(255, 255, 255, 0.08);
+		color: #f3eae1;
+	}
+
+	:global(.landing-light.blog-dark .site-footer .site-footer-muted) {
+		color: #d7c8bb;
+	}
+</style>

@@ -168,7 +168,7 @@
 		border-radius: 8px;
 		border: none;
 		background: transparent;
-		color: #7a6a5e;
+		color: #5f4f44;
 		transition: background 150ms ease, color 150ms ease;
 	}
 
@@ -178,7 +178,7 @@
 	}
 
 	:global(.landing-light.blog-dark .blog-action-button) {
-		color: #c7b6a7;
+		color: #e3d4c6;
 	}
 
 	:global(.landing-light.blog-dark .blog-action-button:hover) {
@@ -192,7 +192,7 @@
 	}
 
 	:global(.landing-light.blog-dark .blog-back-link) {
-		color: #c7b6a7;
+		color: #e3d4c6;
 	}
 
 	:global(.landing-light.blog-dark .blog-back-link:hover) {

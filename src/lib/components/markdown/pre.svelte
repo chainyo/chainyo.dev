@@ -94,7 +94,7 @@
 			class="border-b border-[#e3d2c4] bg-[#f7efe5] px-4 py-3 text-left text-sm font-semibold text-[#2b2420] transition hover:no-underline"
 		>
 			<div class="flex flex-col gap-1">
-				<span class="uppercase tracking-[0.2em] text-[0.65rem] text-[#7a6a5e]">{title}</span>
+				<span class="uppercase tracking-[0.2em] text-[0.65rem] text-[#5f4f44]">{title}</span>
 				{#if !isOpen && preview.length > 0}
 					<span class="font-mono text-xs text-[#5c5048]">{preview}</span>
 				{/if}

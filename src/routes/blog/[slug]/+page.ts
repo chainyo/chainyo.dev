@@ -17,32 +17,47 @@ type BlogModule = {
 };
 
 export const load: PageLoad = async ({ params }) => {
-	for (const [path, mod] of Object.entries(blogModules)) {
+	const posts = Object.entries(blogModules).map(([path, mod]) => {
 		const module = mod as BlogModule;
 		const raw = module.metadata ?? {};
 		const parsed = blogFrontmatterSchema.parse(raw);
 		const slug = slugifyTitle(parsed.title);
 
-		if (slug === params.slug) {
-			const rawSource = blogRawModules[path];
-			const markdown =
-				typeof rawSource === "string"
-					? rawSource.replace(/^---[\\s\\S]*?---\\s*/, "")
-					: "";
-			const repoPath = path.startsWith("/") ? path.slice(1) : path;
-			const repoFileUrl = `${repoUrl}/blob/${repoBranch}/${repoPath}`;
+		return {
+			slug,
+			...parsed,
+			path,
+			module,
+		};
+	});
 
-			return {
-				post: {
-					slug,
-					component: module.default,
-					markdown,
-					repoFileUrl,
-					...parsed,
-					path,
-				},
-			};
-		}
+	posts.sort((a, b) => {
+		const aTime = Number(new Date(a.date));
+		const bTime = Number(new Date(b.date));
+		return bTime - aTime;
+	});
+
+	const activePost = posts.find((post) => post.slug === params.slug);
+
+	if (activePost) {
+		const rawSource = blogRawModules[activePost.path];
+		const markdown =
+			typeof rawSource === "string"
+				? rawSource.replace(/^---[\\s\\S]*?---\\s*/, "")
+				: "";
+		const repoPath = activePost.path.startsWith("/") ? activePost.path.slice(1) : activePost.path;
+		const repoFileUrl = `${repoUrl}/blob/${repoBranch}/${repoPath}`;
+		const { module, ...postData } = activePost;
+
+		return {
+			post: {
+				component: module.default,
+				markdown,
+				repoFileUrl,
+				...postData,
+			},
+			posts: posts.map(({ slug, title, date }) => ({ slug, title, date })),
+		};
 	}
 
 	throw error(404, "Post not found");
